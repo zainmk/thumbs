@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          What kind og code you got man, whats going on?
+          What kind of code you got man, whats going on?
         </p>
       </header>
     </div>
