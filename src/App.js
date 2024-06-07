@@ -10,7 +10,6 @@ function App() {
     <div className="App">
         <div style={{border: "1px solid black"}}>
           card info
-          <p>------------------------------------- </p>
         </div>
 
 
