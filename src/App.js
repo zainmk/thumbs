@@ -1,38 +1,21 @@
-
 import './App.css';
 
-
-
-//Make a div, than do what you want in your card.
-
 function App() {
+
   return (
-    <div className="App">
-        <div style={{border: "1px solid black"}}>
-          card info
+    <div className='App'>
+      <div style={{ height: "50px" }}> music app ♪ </div>
+      <div style={{ display: "flex", flexDirection: "row", height: "100vh"}}>  {/* remove the 'vh' when adding actual content*/}
+        <div style={{flex: 20, border: "2px solid black"}}> 
+          Profile Info 
         </div>
-
-
-        <div style={{border: "1px solid black"}}>
-          <p> The reason: Back before the age of time and man there was a goo, the goo was boo the boo was scary ad the scry was a ghost called neko. Ooo</p>
+        <div style={{flex: 60, border: "2px solid black" }}>
+          Card Info 
         </div>
-
-
-        <div style={{border: "1px solid black"}}>
-        <p> What up neko?</p>
-       </div>
-
-        <div style={{border: "1px solid black"}}>
-          <p> Card for hacking into the pentagon</p>
-          <button>Click Here to Hack into DAtAbASES!!!</button>
+        <div style={{flex: 20, border: "2px solid black" }}>
+          Settings 
         </div>
-
-        <div style={{border: "1px solid black"}}>
-          <p> Card for listeng to zains documentary on living with a job</p>
-          <button>Click Here to Hack into ZainS DAtAbASES!!!</button>
-        </div>
-
-
+      </div>
     </div>
   );
 }
