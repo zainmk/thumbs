@@ -71,8 +71,8 @@ function App() {
                 Description: Has Basic button and paragraph
             */}
             <div style={{border: "1px solid black"}}>
-              <p> Card for listeng to zains documentary on living with a job</p>
-              <button>Click Here to Hack into ZainS DAtAbASES!!!</button>
+              <p> Card for listeng to persons documentary on living without a job</p>
+              <button>Click Here to Hack into persons DAtAbASES!!!</button>
             </div>
 
 
