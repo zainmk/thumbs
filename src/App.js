@@ -65,7 +65,7 @@ function App() {
             */}
             <div style={{border: "1px solid black"}}>
               <h2>Go to Google Docs for App Planning</h2>
-              <a href="https://docs.google.com/document/d/1YHfOfMTHxckLrYp10GOTC3uVzykLQSCbtJKRlVOhnbg/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Go to Google Docs For APP Planning Document</a>
+              <a href="https://docs.google.com/document/d/1YHfOfMTHxckLrYp10GOTC3uVzykLQSCbtJKRlVOhnbg/edit?usp=sharing" target="_blank" rel="noopener noreferrer"><button>Go to Google Docs For APP Planning Document</button></a>
             </div>
 
 
