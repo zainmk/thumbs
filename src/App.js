@@ -84,7 +84,8 @@ function App() {
             */}
             <div style={{border: "1px solid black"}}>
               <p> Card for hacking into the pentagon</p>
-              <button>Click Here to Hack into DAtAbASES!!!</button>
+              <h3>trust....</h3>
+              <a href="https://hackertyper.com/" target="_blank" rel="noopener noreferrer">              <button>Click Here to Hack into the pentagon!!!!!!</button></a>
             </div>
 
 
@@ -94,7 +95,7 @@ function App() {
             */}
             <div style={{border: "1px solid black"}}>
               <p> Card for listeng to persons documentary on living without a job</p>
-              <button>Click Here to Hack into persons DAtAbASES!!!</button>
+              <a href="https://thatsthefinger.com/" target="_blank" rel="noopener noreferrer">              <button>Click Here to Hack into persons DAtAbASES!!!</button></a>
             </div>
 
 
@@ -103,7 +104,7 @@ function App() {
                 Description: Testing to do an api call with star wars api for card
             */}
             <div>
-              <button> The name of a person in star wars is {httpGet("https://swapi.dev/api/people/" + Math.floor(Math.random() * (4 - 1 + 1)) + 1 )}</button>
+              <p> The name of a person in star wars is {httpGet("https://swapi.dev/api/people/" + Math.floor(Math.random() * (4 - 1 + 1)) + 1 )}</p>
             </div>
 
 
