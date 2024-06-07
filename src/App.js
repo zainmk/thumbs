@@ -14,24 +14,24 @@ function App() {
         </div>
 
 
-        <div>
+        <div style={{border: "1px solid black"}}>
           <p> The reason: Back before the age of time and man there was a goo, the goo was boo the boo was scary ad the scry was a ghost called neko. Ooo</p>
         </div>
 
 
-       <div>
+        <div style={{border: "1px solid black"}}>
         <p> What up neko?</p>
        </div>
 
-      <div>
-        <p> Card for hacking into the pentagon</p>
-        <button>Click Here to Hack into DAtAbASES!!!</button>
-      </div>
+        <div style={{border: "1px solid black"}}>
+          <p> Card for hacking into the pentagon</p>
+          <button>Click Here to Hack into DAtAbASES!!!</button>
+        </div>
 
-      <div>
-        <p> Card for listeng to zains documentary on living with a job</p>
-        <button>Click Here to Hack into ZainS DAtAbASES!!!</button>
-      </div>
+        <div style={{border: "1px solid black"}}>
+          <p> Card for listeng to zains documentary on living with a job</p>
+          <button>Click Here to Hack into ZainS DAtAbASES!!!</button>
+        </div>
 
 
     </div>
