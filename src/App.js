@@ -48,6 +48,8 @@ function App() {
             </div>
 
         </div>
+
+
         <div style={{flex: 60, border: "2px solid black" }}>
           Card NewsFeed 
           { /*
@@ -62,7 +64,8 @@ function App() {
                 Description: Has Reason paragraph
             */}
             <div style={{border: "1px solid black"}}>
-              <p> The reason: Back before the age of time and man there was a goo, the goo was boo the boo was scary ad the scry was a ghost called neko. Ooo</p>
+              <h2>Go to Google Docs for App Planning</h2>
+              <a href="https://docs.google.com/document/d/1YHfOfMTHxckLrYp10GOTC3uVzykLQSCbtJKRlVOhnbg/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Go to Google Docs For APP Planning Document</a>
             </div>
 
 
