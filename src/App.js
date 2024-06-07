@@ -7,22 +7,15 @@ import banner from './fake-database/banner.jpg';
 //Make a div, than do what you want in your card.
 
 function App() {
-  //  Counter is a state initialized to 0
-  const [counter, setCounter] = useState(1);
 
-  const handleClick1 = () => {
-    // Counter state is incremented
-    setCounter(counter + 1);
-  };
 
 
   return (
     <div className='App'>
+
       <div style={{ height: "50px" }}> music app ♪ 
-
-        
-
       </div>
+
       <div style={{ display: "flex", flexDirection: "row", height: "100vh"}}>  {/* remove the 'vh' when adding actual content*/}
         <div style={{flex: 20, border: "2px solid black"}}> 
           Profile Info 
@@ -31,24 +24,24 @@ function App() {
                 Card Name:  Basic Profile Template
                 Description: Has picture of profile
             */}
-            <div style={{border: "1px solid black"}}>
+            <div style={{border: "2px solid white"}}>
               <img src={image} alt='image' />
             </div>
 
 
             { /*
                 Card Name:  Basic Profile Template
-                Description: Has picture of profile
+                Description: Tagline description
             */}
-            <div style={{border: "1px solid black"}}>
+            <div style={{border: "2px solid white"}}>
               <p>Tagline: Shit Dropper</p>
             </div>
 
             { /*
                 Card Name:  Basic Profile Template
-                Description: Has picture of profile
+                Description: Description
             */}
-            <div style={{border: "1px solid black"}}>
+            <div style={{border: "2px solid white"}}>
               <p>Description: Straiught from the ghettos of compton, we the pigeons flew across the seas to master the art of dropping hot shit globally. All records, people and cars know of our white hot trash. And we wont stop
                   until every record store and parking lot knows our shit.
               </p>
@@ -62,14 +55,6 @@ function App() {
             */}
 
           <div className="App">
-
-            { /*
-                Card Name:  Basic Card Template
-                Description: Has paragraph of card info
-            */}
-            <div style={{border: "1px solid black"}}>
-              card info
-            </div>
 
 
             { /*
@@ -115,32 +100,42 @@ function App() {
                 Description: Testing to do an api call with star wars api for card
             */}
             <div>
-              <button> The name of a person in star wars is {httpGet("https://swapi.dev/api/people/" + counter )}</button>
+              <button> The name of a person in star wars is {httpGet("https://swapi.dev/api/people/" + Math.floor(Math.random() * (4 - 1 + 1)) + 1 )}</button>
             </div>
 
 
           </div>
         </div>
+
         <div style={{flex: 20, border: "2px solid black" }}>
           Settings 
 
-
           { /*
                 Card Name:  Basic Settings Template
-                Description: Intial Setting changes
+                Description: Intial COOL changes
             */}
-            <div style={{border: "1px solid black"}}>
+            <div style={{border: "2px solid white"}}>
               <button>Change Profile from loser to dope boy</button>
             </div>
 
 
             { /*
                 Card Name:  Basic Settings Template
-                Description: Intial Setting changes
+                Description: Intial COMA changes
             */}
-            <div style={{border: "1px solid black"}}>
+            <div style={{border: "2px solid white"}}>
               <button>Induce COMA upon Self</button>
             </div>
+
+            
+            { /*
+                Card Name:  Basic Settings Template
+                Description: Intial to log out to be a loser changes
+            */}
+            <div style={{border: "2px solid white"}}>
+              <button>Logout and become a super LOSER</button>
+            </div>
+
 
         </div>
       </div>
