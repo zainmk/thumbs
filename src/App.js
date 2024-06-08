@@ -1,22 +1,18 @@
 import './App.css';
-import React, { useState } from "react";
+import React from "react";
 import image from './fake-database/pigeon.jpg';
-import banner from './fake-database/banner.jpg';
 
+import TitleBar from './components/TitleBar.js';
 
 //Make a div, than do what you want in your card.
 
 function App() {
 
 
-
   return (
     <div className='App'>
-
-      <div style={{ height: "50px" }}> music app ♪ 
-      </div>
-
-      <div style={{ display: "flex", flexDirection: "row", height: "100vh"}}>  {/* remove the 'vh' when adding actual content*/}
+      <TitleBar />
+      <div style={{ display: "flex", flexDirection: "row"}}> 
         <div style={{flex: 20, border: "2px solid black"}}> 
           Profile Info 
 
@@ -25,10 +21,8 @@ function App() {
                 Description: Has picture of profile
             */}
             <div style={{border: "2px solid white"}}>
-              <img src={image} alt='image' />
+              <img src={image} alt='relevant description' />
             </div>
-
-
             { /*
                 Card Name:  Basic Profile Template
                 Description: Tagline description
