@@ -6,10 +6,13 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-import Delete from '@mui/icons-material/Delete';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
-function Cards(){
+function Cards(props){
+
+    console.log(props)
+
     return ( 
     <Card sx={{ minWidth: 275, margin:"20px" }}>
         <CardContent sx={{ display: "flex", gap:"20px", flexDireciton: "row" }}>
@@ -34,8 +37,8 @@ function Cards(){
             </Box>
         </CardContent>
         <CardActions>
-            <Button>
-                <Delete />
+            <Button variant='outlined' startIcon={<DeleteIcon />} onClick={()=> props.setData(props.data.slice(0, -1))}>
+                Delete
             </Button>
         </CardActions>
     </Card>
