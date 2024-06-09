@@ -3,11 +3,8 @@ import React from "react";
 import image from '../fake-database/pigeon.jpg';
 
 import TitleBar from '../components/TitleBar.js';
-import LetterAvatars from '../components/Avatar.js';
 
 import CardList from '../components/CardList.js';
-
-import users from "../fake-database/userDatabase.json";
 
 //Make a div, than do what you want in your card.
 
@@ -19,50 +16,13 @@ function MainPage() {
       <TitleBar />
       <div style={{ display: "flex", flexDirection: "row"}}> 
         <div style={{flex: 20, border: "2px solid black"}}> 
-          Profile Info 
 
             { /*
                 Card Name:  Basic Profile Template
                 Description: Has picture of profile
             */}
             <div style={{border: "2px solid white"}}>
-              <img src={image} alt='relevant description' />
             </div>
-
-            { /*
-                Card Name:  Basic Profile Template
-                Description: Adding letter avatar for profile
-            */}
-            <div style={{border: "2px solid white", "padding-left": "80px"}}>
-              {/*enter initial of profile person, fake initial : H*/}
-              <LetterAvatars name="D" />
-            </div>
-            
-            { /*
-                Card Name:  Basic Profile Template
-                Description: Tagline description
-            */}
-            <div style={{border: "2px solid white"}}>
-              <p>Name : {JSON.stringify(users, null, 2).substring(JSON.stringify(users, null, 2).search("name") + 6, JSON.stringify(users, null, 2).search("profileDescription")-4)}</p>
-            </div>
-
-
-            { /*
-                Card Name:  Basic Profile Template
-                Description: Tagline description
-            */}
-            <div style={{border: "2px solid white"}}>
-              <p>Date Of Birth : {JSON.stringify(users, null, 2).substring(JSON.stringify(users, null, 2).search("DateOfBirth") + 14, JSON.stringify(users, null, 2).search("End")-4)}</p>
-            </div>
-
-            { /*
-                Card Name:  Basic Profile Template
-                Description: Description
-            */}
-            <div style={{border: "2px solid white"}}>
-              <p>Description : {JSON.stringify(users, null, 2).substring(JSON.stringify(users, null, 2).search("profileDescription") + 20, JSON.stringify(users, null, 2).search("DateOfBirth")-5)}</p>
-            </div>
-
         </div>
 
 

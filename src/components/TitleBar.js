@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import { ThumbsUpDownTwoTone } from '@mui/icons-material';
 
 import Button from '@mui/material/Button';
+import ProfileDrawer from './ProfileDrawer';
 
 import { useNavigate } from "react-router-dom"
 
@@ -18,6 +19,7 @@ export default function TitleBar() {
     <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static" >
           <Toolbar>
+          <ProfileDrawer/>
             <Typography
                 variant="h6"
                 component="div"
