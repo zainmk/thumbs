@@ -2,6 +2,7 @@ import React from "react";
 import image from '../fake-database/pigeon.jpg';
 
 import TitleBar from '../components/TitleBar.js';
+import CardList from '../components/CardList.js';
 
 function MainPage() {
 
@@ -39,8 +40,8 @@ function MainPage() {
         </div>
 
 
-        <div style={{flex: 60, border: "2px solid black" }}>
-            Card NewsFeed 
+        <div style={{ flex: 60, border: "2px solid black" }}>
+            <CardList />
             { /*
             Instructions: Copy the basic Card Template, and paste it at the bttom IN card NewsFeed Div section
             */}
