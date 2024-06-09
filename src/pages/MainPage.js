@@ -4,6 +4,8 @@ import image from '../fake-database/pigeon.jpg';
 import TitleBar from '../components/TitleBar.js';
 import CardList from '../components/CardList.js';
 
+import { httpGet } from '../helpers/request.js'
+
 function MainPage() {
 
     return (
@@ -137,16 +139,6 @@ function MainPage() {
     );
 }
 
-//Function: For Returning Star Wars API Cal
-function httpGet(theUrl)
-{
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-    xmlHttp.send( null );
-    //Returns xmlHttp.responseText containing whole object in string form, only want name part
-    const name = xmlHttp.responseText.substring(xmlHttp.responseText.search("name")+6 , xmlHttp.responseText.search("height")-2)
 
-    return name;
-}
 
 export default MainPage;
