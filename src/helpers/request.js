@@ -5,8 +5,7 @@ export function httpGet(theUrl, headerText="'Content-type', 'application/x-www-f
     xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
     xmlHttp.setRequestHeader(headerText.substring(1, headerText.search(",")-1), headerText.substring(headerText.search(",")+3, headerText.length-1));
     xmlHttp.send( null );
-    //Returns xmlHttp.responseText containing whole object in string form, only want name part
-    
 
-    return xmlHttp.responseText;
+    //Returns xmlHttp.responseText containing whole object in string form, only want name part
+    return xmlHttp.response;
 }

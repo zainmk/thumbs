@@ -11,11 +11,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 function Cards(props){
 
-    console.log(props)
-
     return ( 
     <Card sx={{ minWidth: 275, margin:"20px" }}>
-        <CardContent sx={{ display: "flex", gap:"20px", flexDireciton: "row" }}>
+        <CardContent sx={{ display: "flex", gap:"20px", flexDirection: "row" }}>
             <Box>
                 <Paper elevation={24} sx={{ height:"120px", width: "120px"}}> 
                     <img alt={'testImage'} src={ 'logo192.png'} style={{ height:"100%", width: "100%" }} />
