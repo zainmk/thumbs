@@ -1,0 +1,21 @@
+
+[
+    {
+        "name": "Super hero G",
+        "profileDescription": "I am a super hero, until I took an arrow to the knee, now IDK who I am cause I STILL DONT UNDERTSAND WTF THAT MEANS AND I PLAYED A SHITTON OF SKYRIM",
+        "DateOfBirth": "July 1, 2024",
+        "End": "END"
+    },
+    {
+        "name": "Super hero T",
+        "profileDescription": "I am a dont do ....",
+        "DateOfBirth": "January 2, 2024",
+        "End": "END"
+    },
+    {
+        "name": "Super hero A",
+        "profileDescription": "I am and have been not born yet bruh",
+        "DateOfBirth": "December 1, 2024",
+        "End": "END"
+    }
+]
