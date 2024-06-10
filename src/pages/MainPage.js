@@ -1,29 +1,30 @@
 import '../App.js';
 import React from "react";
 import image from '../fake-database/pigeon.jpg';
+import Button from '@mui/material/Button';
 
 import TitleBar from '../components/TitleBar.js';
 
 import CardList from '../components/CardList.js';
 
-import users from "../fake-database/userDatabase.json";
-import { httpGet } from '../helpers/request.js';
-
 //Make a div, than do what you want in your card.
 
 function MainPage() {
 
-  return (
-    <div className='MainPage'>
-      <TitleBar />
-      <div style={{ display: "flex", flexDirection: "row"}}> 
-        <div style={{flex: 20, border: "2px solid black"}}> 
 
+  return (
+    <div style={{flex: 60, border: "2px solid black"}} className='MainPage'>
+      <TitleBar />
+
+      <div style={{ display: "flex", flexDirection: "row"}}> 
+        <div style={{flex: 20}}> 
+            {/* Left Side */}
             { /*
                 Card Name:  Basic Profile Template
                 Description: Has picture of profile
             */}
-            <div style={{border: "2px solid white"}}>
+            <div style={{color: "white"}}>
+                <p>...........SO what we put here tho...........</p>
             </div>
         </div>
 
@@ -99,33 +100,17 @@ function MainPage() {
           </div>
         </div>
 
-        <div style={{flex: 20, border: "2px solid black" }}>
+        <div style={{flex: 20, border: "2px solid black"}}>
           Settings 
 
-          { /*
-                Card Name:  Basic Settings Template
-                Description: Intial COOL changes
-            */}
-            <div style={{border: "2px solid white"}}>
-              <button>Change Profile from loser to dope boy</button>
-            </div>
-
-
-            { /*
-                Card Name:  Basic Settings Template
-                Description: Intial COMA changes
-            */}
-            <div style={{border: "2px solid white"}}>
-              <button>Induce COMA upon Self</button>
-            </div>
-
+            <p>&nbsp;</p>
             
             { /*
                 Card Name:  Basic Settings Template
-                Description: Intial to log out to be a loser changes
+                Description: LOGOUT???
             */}
-            <div style={{border: "2px solid white"}}>
-              <button>Logout and become a super LOSER</button>
+            <div>
+              <Button variant="Contained">Logout and become a super LOSER</Button>
             </div>
 
 
@@ -134,6 +119,24 @@ function MainPage() {
     </div>
   );
 }
+
+
+
+
+
+//Function: For Returning Star Wars API Cal
+function httpGet(theUrl, headerText="'Content-type', 'application/x-www-form-urlencoded'")
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.setRequestHeader(headerText.substring(1, headerText.search(",")-1), headerText.substring(headerText.search(",")+3, headerText.length-1));
+    xmlHttp.send( null );
+    //Returns xmlHttp.responseText containing whole object in string form, only want name part
+    
+
+    return xmlHttp.responseText;
+}
+
 
 export default MainPage;
 
