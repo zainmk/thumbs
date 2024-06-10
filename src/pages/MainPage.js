@@ -69,16 +69,6 @@ function MainPage() {
 
 
             { /*
-                Card Name:  Basic Card Template
-                Description: Has Basic button and paragraph
-            */}
-            <div style={{border: "1px solid black"}}>
-              <p> Card for listeng to persons documentary on living without a job</p>
-              <a href="https://thatsthefinger.com/" target="_blank" rel="noopener noreferrer"><Button variant="contained">Click Here to Hack into persons DAtAbASES!!!</Button> </a>
-            </div>
-
-
-            { /*
                 Card Name:  Star Wars API Card
                 Description: Testing to do an api call with star wars api for card
             */}
