@@ -12,7 +12,6 @@ export default function LetterAvatars(props) {
     //You enter the users array of objects, and enter userID for user you want, RETURNS users information in an object
   function findingUser(users, userID="10000001") {
     var results = [];
-    var searchField = "id";
     var searchVal = userID;
 
     for (var i=0 ; i < users.users.length ; i++)

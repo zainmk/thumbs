@@ -1,6 +1,5 @@
 import '../App.js';
 import React from "react";
-import image from '../fake-database/pigeon.jpg';
 import Button from '@mui/material/Button';
 
 import TitleBar from '../components/TitleBar.js';

@@ -5,6 +5,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import Card from '@mui/material/Card';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
+import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
+import IconButton from '@mui/material/IconButton';
 
 import CardContent from '@mui/material/CardContent';
 
@@ -16,18 +18,6 @@ import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 
 import { httpGet } from '../helpers/request';
-
-const searchResults = [
-    {
-        title: "star wars", by: "george lucas", year: 2001
-    },
-    {
-        title: "inception", by: "christopher nolan", year: 2013
-    },
-    {
-        title: "Godfather", by: 'francis ford coppola', year: 1998
-    }
-]
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -73,27 +63,29 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const movieSearch = (searchText) => {
-    
-    const result = httpGet(`https://search.imdbot.workers.dev/?q=${searchText}`);
-    console.log(typeof(result))
+
+    const result = JSON.parse(httpGet(`http://www.omdbapi.com/?apikey=522792c1&s=${searchText}`))
+    return result.Response !== "False" ? result.Search : []
+
 }
 
 function SearchCard(){
 
     const [searchText, setSearchText] = useState('');
+    const [searchData, setSearchData] = useState([]);
 
     React.useEffect(()=>{
+        
+        if(searchText.length > 3){
 
-        console.log(searchText)
+            setSearchData(movieSearch(searchText))
+
+        }
+        else{
+            setSearchData([])
+        }
 
     }, [searchText])
-
-
-    React.useEffect(()=>{
-
-        movieSearch('inception')
-
-    }, [])
 
 
     return (
@@ -110,17 +102,22 @@ function SearchCard(){
                         placeholder="Search..."
                     />  
                 </Search>
-                <Table>
+                {searchData.length > 0 && <Table>
                     <TableBody>
-                        {searchResults.map((result) => (
-                            <TableRow key={result.title}>
-                                <TableCell >{result.title}</TableCell>
-                                <TableCell >{result.by}</TableCell>
-                                <TableCell >{result.year}</TableCell>
+                        {searchData.map((result) => (
+                            <TableRow key={result.Title}>
+                                <TableCell >{result.Title}</TableCell>
+                                <TableCell >{result.Year}</TableCell>
+                                <TableCell >{result.Type}</TableCell>
+                                <TableCell> 
+                                    <IconButton size='small'>
+                                        <LibraryAddIcon />
+                                    </IconButton>
+                                </TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
-                </Table>
+                </Table>}
             </CardContent>
         </Card>
         
