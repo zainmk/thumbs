@@ -44,7 +44,7 @@ function MainPage() {
             */}
             <div style={{border: "1px solid black"}}>
               <h2>Go to Google Docs for App Planning</h2>
-              <a href="https://docs.google.com/document/d/1YHfOfMTHxckLrYp10GOTC3uVzykLQSCbtJKRlVOhnbg/edit?usp=sharing" target="_blank" rel="noopener noreferrer"><button>Go to Google Docs For APP Planning Document</button></a>
+              <a href="https://docs.google.com/document/d/1YHfOfMTHxckLrYp10GOTC3uVzykLQSCbtJKRlVOhnbg/edit?usp=sharing" target="_blank" rel="noopener noreferrer"><Button variant="contained">Go to Google Docs For APP Planning Document</Button></a>
             </div>
 
 
@@ -64,7 +64,7 @@ function MainPage() {
             <div style={{border: "1px solid black"}}>
               <p> Card for hacking into the pentagon</p>
               <h3>trust....</h3>
-              <a href="https://hackertyper.com/" target="_blank" rel="noopener noreferrer">              <button>Click Here to Hack into the pentagon!!!!!!</button></a>
+              <a href="https://hackertyper.com/" target="_blank" rel="noopener noreferrer"><Button variant="contained">Click Here to Hack into the pentagon!!!!!</Button> </a>
             </div>
 
 
@@ -74,7 +74,7 @@ function MainPage() {
             */}
             <div style={{border: "1px solid black"}}>
               <p> Card for listeng to persons documentary on living without a job</p>
-              <a href="https://thatsthefinger.com/" target="_blank" rel="noopener noreferrer">              <button>Click Here to Hack into persons DAtAbASES!!!</button></a>
+              <a href="https://thatsthefinger.com/" target="_blank" rel="noopener noreferrer"><Button variant="contained">Click Here to Hack into persons DAtAbASES!!!</Button> </a>
             </div>
 
 
@@ -101,16 +101,14 @@ function MainPage() {
         </div>
 
         <div style={{flex: 20, border: "2px solid black"}}>
-          Settings 
 
-            <p>&nbsp;</p>
             
             { /*
                 Card Name:  Basic Settings Template
                 Description: LOGOUT???
             */}
             <div>
-              <Button variant="Contained">Logout and become a super LOSER</Button>
+              <Button variant="contained">Logout and become a super LOSER</Button>
             </div>
 
 
