@@ -64,7 +64,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const movieSearch = (searchText) => {
 
-    const result = JSON.parse(httpGet(`http://www.omdbapi.com/?apikey=522792c1&s=${searchText}`))
+    const result = JSON.parse(httpGet(`https://www.omdbapi.com/?apikey=522792c1&s=${searchText}`))
     return result.Response !== "False" ? result.Search : []
 
 }
@@ -74,11 +74,10 @@ function SearchCard(){
     const [searchText, setSearchText] = useState('');
     const [searchData, setSearchData] = useState([]);
 
-
     useEffect(()=>{
         if(searchText.length > 3){
 
-            fetch(`http://www.omdbapi.com/?apikey=522792c1&s=${searchText}`)
+            fetch(`https://www.omdbapi.com/?apikey=522792c1&s=${searchText}`)
                 .then(res => res.json())
                 .then(res => res.Response !== 'False' ? res.Search : [])
                 .then(res => setSearchData(res))
