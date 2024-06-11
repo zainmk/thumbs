@@ -15,20 +15,7 @@ function MainPage() {
     <div style={{flex: 60, border: "2px solid black"}} className='MainPage'>
       <TitleBar />
 
-      <div style={{ display: "flex", flexDirection: "row"}}> 
-        <div style={{flex: 20}}> 
-            {/* Left Side */}
-            { /*
-                Card Name:  Basic Profile Template
-                Description: Has picture of profile
-            */}
-            <div style={{color: "white"}}>
-                <p>...........SO what we put here tho...........</p>
-            </div>
-        </div>
-
-
-        <div style={{flex: 60, border: "2px solid black" }}>
+        <div style={{ border: "2px solid black" }}>
           <CardList />
           { /*
             Instructions: Copy the basic Card Template, and paste it at the bttom IN card NewsFeed Div section
@@ -75,9 +62,6 @@ function MainPage() {
             <div style={{border: "1px solid black"}}>
               <p> The name of a person in star wars is {httpGet("https://swapi.dev/api/people/" + Math.floor(Math.random() * (4 - 1 + 1)) + 1 ).substring(9,15) + "..."}</p>
             </div>
-            
-
-
             { /*
                 Card Name:  Dad Jokes API Card
                 Description: Getting alot of api calls
@@ -88,22 +72,7 @@ function MainPage() {
             </div>
           </div>
         </div>
-
-        <div style={{flex: 20, border: "2px solid black"}}>
-
-            
-            { /*
-                Card Name:  Basic Settings Template
-                Description: LOGOUT???
-            */}
-            <div>
-              <Button variant="contained">Logout and become a super LOSER</Button>
-            </div>
-
-
-        </div>
       </div>
-    </div>
   );
 }
 

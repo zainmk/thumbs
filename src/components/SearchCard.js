@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import SearchIcon from '@mui/icons-material/Search';
 import Card from '@mui/material/Card';
@@ -74,22 +74,24 @@ function SearchCard(){
     const [searchText, setSearchText] = useState('');
     const [searchData, setSearchData] = useState([]);
 
-    React.useEffect(()=>{
-        
+
+    useEffect(()=>{
         if(searchText.length > 3){
 
-            setSearchData(movieSearch(searchText))
+            fetch(`http://www.omdbapi.com/?apikey=522792c1&s=${searchText}`)
+                .then(res => res.json())
+                .then(res => res.Response !== 'False' ? res.Search : [])
+                .then(res => setSearchData(res))
 
         }
         else{
             setSearchData([])
         }
-
     }, [searchText])
 
 
     return (
-        <Card sx={{ minWidth: 275, margin:"20px" }}>
+        <Card sx={{ margin:"20px", width: "50%" }}>
             <CardContent>
                 <AddIcon />
                 <Search> 

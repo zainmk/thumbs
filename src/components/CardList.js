@@ -9,7 +9,7 @@ function CardList(){
     const [testData, setTestData] = useState([1, 2, 3]);
 
     return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: "20px", backgroundImage:"url('rollinghills.gif')"}}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: "20px", alignItems: "center", backgroundImage:"url('rollinghills.gif')"}}>
         <SearchCard />
         {testData.map((element) => {
             return (
