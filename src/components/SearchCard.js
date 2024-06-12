@@ -80,7 +80,7 @@ function SearchCard({ setCardData }){
     }, [searchText])
 
     return (
-        <Card sx={{ margin:"20px", width: "50%" }}>
+        <Card sx={{ margin:"20px", width: "80%" }}>
             <CardContent>
                 <AddIcon />
                 <Search> 

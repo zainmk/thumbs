@@ -8,7 +8,6 @@ import MainPage from "./pages/MainPage";
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-// TODO: consider adding dark mode for the entire app
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',

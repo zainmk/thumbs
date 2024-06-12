@@ -36,7 +36,6 @@ function MainPage() {
 
   const [cardData, setCardData] = useState(testData) // TODO: consider a context for this variable // Add this to cache/cookies (keep track of entries locally
 
-
   return (
     <div style={{flex: 60, border: "2px solid black"}} className='MainPage'>
       <TitleBar />

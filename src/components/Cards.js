@@ -12,8 +12,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 function Cards({ onDelete, data }){
 
     return ( 
-    <Card sx={{ margin:"20px", width: "50%" }}>  
-        <CardContent sx={{ display: "flex", gap:"20px", flexDirection: "row" }}>
+    <Card className="cards" sx={{ margin:"20px", width: "80%" }}> {/* TODO: MAKE A CARD WRAPPER COMPONENT */}
+        <CardContent sx={{ display: "flex", gap:"20px", flexDirection: "row" }}> 
             <Box>
                 <Paper elevation={24} sx={{ height:"120px", width: "120px"}}> 
                     <img alt={'testImage'} src={ 'logo192.png'} style={{ height:"100%", width: "100%" }} />
