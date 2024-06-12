@@ -30,8 +30,8 @@ function Cards({ onDelete, data }){
     <Card className="cards" sx={{ margin:"20px", width: "80%" }}> {/* TODO: MAKE A CARD WRAPPER COMPONENT */}
         <CardContent sx={{ display: "flex", gap:"20px", flexDirection: "row" }}> 
             <Box>
-                <Paper elevation={24} sx={{ height:"120px" }}> 
-                    <img alt={'testImage'} src={ image ?? 'logo192.png'} style={{ height:"100%", width: "100%" }} />
+                <Paper elevation={24} sx={{ width :"120px" }}> 
+                    <img alt={''} src={ image } style={{ width:"100%" }} />
                 </Paper>
             </Box>
             <Box>
