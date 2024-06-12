@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -11,12 +12,26 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 function Cards({ onDelete, data }){
 
+    const [image, setImage] = useState()
+
+    useEffect(() => {
+
+        if(data.Poster && data.Poster !== 'N/A'){
+            fetch(data.Poster)
+                .then(res => res.blob())
+                .then(res => URL.createObjectURL(res))
+                .then(res => setImage(res))
+        }
+        
+    }, [data])
+
+
     return ( 
     <Card className="cards" sx={{ margin:"20px", width: "80%" }}> {/* TODO: MAKE A CARD WRAPPER COMPONENT */}
         <CardContent sx={{ display: "flex", gap:"20px", flexDirection: "row" }}> 
             <Box>
-                <Paper elevation={24} sx={{ height:"120px", width: "120px"}}> 
-                    <img alt={'testImage'} src={ 'logo192.png'} style={{ height:"100%", width: "100%" }} />
+                <Paper elevation={24} sx={{ height:"120px" }}> 
+                    <img alt={'testImage'} src={ image ?? 'logo192.png'} style={{ height:"100%", width: "100%" }} />
                 </Paper>
             </Box>
             <Box>
