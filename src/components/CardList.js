@@ -1,19 +1,19 @@
 import Cards from './Cards.js';
 import Box from '@mui/material/Box';
-import { useState } from 'react';
 import SearchCard from './SearchCard.js';
 
 
-function CardList(){
-
-    const [testData, setTestData] = useState([1, 2, 3]);
+function CardList({ cardData, setCardData }){
 
     return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: "20px", alignItems: "center", backgroundImage:"url('rollinghills.gif')"}}>
-        <SearchCard />
-        {testData.map((element) => {
+        <SearchCard setCardData={setCardData} />
+        {cardData.map((element) => {
             return (
-                <Cards key={element} data={testData} setData={setTestData} />
+                <Cards key={element.imdbID} data={element} onDelete={()=>{
+                    setCardData(cardData.filter(entry => entry.Title !== element.Title))
+                }
+                } />
             )
         })}
     </Box>

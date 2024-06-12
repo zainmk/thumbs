@@ -9,7 +9,7 @@ import Box from '@mui/material/Box';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 
-function Cards(props){
+function Cards({ onDelete, data }){
 
     return ( 
     <Card sx={{ margin:"20px", width: "50%" }}>  
@@ -21,13 +21,13 @@ function Cards(props){
             </Box>
             <Box>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                    music / movie / game
+                    {data.Type}
                 </Typography>
                 <Typography variant="h5" component="div">
-                    name / title
+                    {data.Title} | ({data.Year})
                 </Typography>
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    author / director / studio
+                    artist | director | studio
                 </Typography>
                 <Typography variant="body2">
                     description of media
@@ -35,7 +35,7 @@ function Cards(props){
             </Box>
         </CardContent>
         <CardActions>
-            <Button variant='outlined' startIcon={<DeleteIcon />} onClick={()=> props.setData(props.data.slice(0, -1))}>
+            <Button variant='outlined' startIcon={<DeleteIcon />} onClick={ onDelete }>
                 Delete
             </Button>
         </CardActions>

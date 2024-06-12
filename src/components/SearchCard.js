@@ -17,8 +17,6 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 
-import { httpGet } from '../helpers/request';
-
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -62,14 +60,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-const movieSearch = (searchText) => {
-
-    const result = JSON.parse(httpGet(`https://www.omdbapi.com/?apikey=522792c1&s=${searchText}`))
-    return result.Response !== "False" ? result.Search : []
-
-}
-
-function SearchCard(){
+function SearchCard({ setCardData }){
 
     const [searchText, setSearchText] = useState('');
     const [searchData, setSearchData] = useState([]);
@@ -81,13 +72,12 @@ function SearchCard(){
                 .then(res => res.json())
                 .then(res => res.Response !== 'False' ? res.Search : [])
                 .then(res => setSearchData(res))
-
+                .catch(err => console.log(err))
         }
         else{
             setSearchData([])
         }
     }, [searchText])
-
 
     return (
         <Card sx={{ margin:"20px", width: "50%" }}>
@@ -106,12 +96,15 @@ function SearchCard(){
                 {searchData.length > 0 && <Table>
                     <TableBody>
                         {searchData.map((result) => (
-                            <TableRow key={result.Title}>
+                            <TableRow key={result.imdbID}>
                                 <TableCell >{result.Title}</TableCell>
                                 <TableCell >{result.Year}</TableCell>
                                 <TableCell >{result.Type}</TableCell>
                                 <TableCell> 
-                                    <IconButton size='small'>
+                                    <IconButton size='small' onClick={()=> {
+                                        setCardData((cardData) => [result, ...cardData])
+                                        setSearchData([])
+                                    }}>
                                         <LibraryAddIcon />
                                     </IconButton>
                                 </TableCell>
