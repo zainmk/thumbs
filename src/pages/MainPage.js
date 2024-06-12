@@ -1,5 +1,5 @@
 import '../App.js';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from '@mui/material/Button';
 
 import TitleBar from '../components/TitleBar.js';
@@ -35,6 +35,18 @@ const testData = [
 function MainPage() {
 
   const [cardData, setCardData] = useState(testData) // TODO: consider a context for this variable // Add this to cache/cookies (keep track of entries locally
+
+  useEffect(() => {
+    if(cardData !== testData){
+      localStorage.setItem('cardData', JSON.stringify(cardData));
+    }
+  }, [cardData]);
+
+
+  useEffect(() => {
+    const existingCardData = JSON.parse(localStorage.getItem('cardData'));
+    setCardData(existingCardData ? existingCardData : testData)
+  }, []);
 
   return (
     <div style={{flex: 60, border: "2px solid black"}} className='MainPage'>
