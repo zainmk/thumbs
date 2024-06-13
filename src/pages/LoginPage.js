@@ -16,8 +16,8 @@ function LoginPage() {
     const navigate = useNavigate();
 
     //Making states to capture values
-    const [usernameEntry, setUsernameEntry] = useState("");
-    const [passwordEntry, setPasswordEntry] = useState("");
+    const [usernameEntry, setUsernameEntry] = useState("Alan");
+    const [passwordEntry, setPasswordEntry] = useState("Alan");
 
 
 
