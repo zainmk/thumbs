@@ -1,5 +1,5 @@
 import '../App.js';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from '@mui/material/Button';
 
 import TitleBar from '../components/TitleBar.js';
@@ -8,33 +8,22 @@ import CardList from '../components/CardList.js';
 
 
 
-const testData = [
-  {
-    Type: "movie",
-    Title: "Star Wars: Episode IV - A New Hope",
-    Year: 1977,
-    imdbID: "tt0076759",
-    Poster: ""
-  },
-  {
-    Type: "movie",
-    Title: "Inception",
-    Year: 2010,
-    imdbID: "tt1375666",
-    Poster: ""
-  },
-  {
-    Type: "game",
-    Title: "Elden Ring",
-    Year: 2022,
-    imdbID: "tt10562854",
-    Poster: ""
-  }
-]
 
 function MainPage() {
 
-  const [cardData, setCardData] = useState(testData) // TODO: consider a context for this variable // Add this to cache/cookies (keep track of entries locally
+  const [cardData, setCardData] = useState([]) // TODO: consider a context for this variable // Add this to cache/cookies (keep track of entries locally
+
+  useEffect(() => {
+    if(cardData.length !== 0){
+      localStorage.setItem('cardData', JSON.stringify(cardData));
+    }
+  }, [cardData]);
+
+
+  useEffect(() => {
+    const existingCardData = JSON.parse(localStorage.getItem('cardData'));
+    setCardData(existingCardData ? existingCardData : [])
+  }, []);
 
   return (
     <div style={{flex: 60, border: "2px solid black"}} className='MainPage'>
