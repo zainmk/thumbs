@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import { Typography } from "@mui/material";
@@ -7,9 +8,46 @@ import Button from '@mui/material/Button';
 
 import { useNavigate } from "react-router-dom"
 
+import { authenticateUser } from "../helpers/database.js";
+
 function LoginPage() {
 
     const navigate = useNavigate();
+
+    //Making states to capture values
+    const [usernameEntry, setUsernameEntry] = useState("");
+    const [passwordEntry, setPasswordEntry] = useState("");
+
+    //When they click LOGIN button, what happens, thye sumbit login FORM
+    const submitFormHandler = (event) => {
+        event.preventDefault();
+
+        console.log("Logining In Account Form Button Clicked!")
+
+        //Create an Object
+        const userData = {};
+
+        //Add Properties, some are just dummy properties
+        userData.name = usernameEntry;
+        userData.password = passwordEntry;
+
+
+        let isAuthenticated = false;
+
+        //A promise .than chain, wait for them to get the whole anwer, than proceed with infor throughout this function
+        //Function im calling, has alot of waiting time
+        authenticateUser(userData).then(res => isAuthenticated=res).then(function(value) {
+            if(isAuthenticated ) {
+                navigate('/');
+            } else {
+                alert("Wrong Credentials, Try Again!");
+                setUsernameEntry("");
+                setPasswordEntry("");
+            }
+        })
+
+
+    };
 
     return (
     <Box sx={{ display: 'flex', alignItems: "center", justifyContent: "center", backgroundImage: 'url(./thumbs.png)', height: "100vh", width: "100wh" }} >
@@ -17,17 +55,24 @@ function LoginPage() {
         <Typography
             variant="h4"
         >
-            Create an Account | Login
+            Login
         </Typography>
         <TextField
             required
+            value={usernameEntry}
+            onChange={event => setUsernameEntry(event.target.value)}
             label="Username"
         />
             <TextField
             required
+            value={passwordEntry}
+            onChange={event => setPasswordEntry(event.target.value)}
             label="Password"
         />
-        <Button variant="contained" onClick={() => navigate('/')}>
+        <Button variant="contained" onClick={() => navigate('/registration')}>
+            Create Account
+        </Button>
+        <Button variant="contained" onClick={submitFormHandler}>
             Login
         </Button>
         </Paper>

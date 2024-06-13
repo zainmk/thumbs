@@ -6,7 +6,7 @@ import TitleBar from '../components/TitleBar.js';
 
 import CardList from '../components/CardList.js';
 
-//Make a div, than do what you want in your card.
+
 
 const testData = [
   {

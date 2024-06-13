@@ -5,6 +5,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import MainPage from "./pages/MainPage";
+import RegistrationPage from "./pages/RegistrationPage";
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
@@ -22,6 +23,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/registration" element={<RegistrationPage />} />
       </Routes>
     </BrowserRouter>
     </ThemeProvider>
