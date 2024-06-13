@@ -9,6 +9,7 @@ import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom"
 
 import { authenticateUser } from "../helpers/database.js";
+import { storeUserKey } from '../helpers/userStore.js';
 
 function LoginPage() {
 
@@ -17,6 +18,8 @@ function LoginPage() {
     //Making states to capture values
     const [usernameEntry, setUsernameEntry] = useState("");
     const [passwordEntry, setPasswordEntry] = useState("");
+
+
 
     //When they click LOGIN button, what happens, thye sumbit login FORM
     const submitFormHandler = (event) => {
@@ -31,14 +34,21 @@ function LoginPage() {
         userData.name = usernameEntry;
         userData.password = passwordEntry;
 
+          if (usernameEntry === "" || passwordEntry === "") {
+            alert("Enter name and password")
+          } else {
 
-        let isAuthenticated = false;
+        
+
+
+        let userKey;
 
         //A promise .than chain, wait for them to get the whole anwer, than proceed with infor throughout this function
         //Function im calling, has alot of waiting time
-        authenticateUser(userData).then(res => isAuthenticated=res).then(function(value) {
-            if(isAuthenticated ) {
-                navigate('/');
+        authenticateUser(userData).then(res => console.log(userKey=res)).then(function(value) {
+            if(userKey) {
+                storeUserKey(userKey);
+                navigate('/',{userKey : userKey});
             } else {
                 alert("Wrong Credentials, Try Again!");
                 setUsernameEntry("");
@@ -46,7 +56,7 @@ function LoginPage() {
             }
         })
 
-
+      }
     };
 
     return (

@@ -11,6 +11,7 @@ import CardList from '../components/CardList.js';
 
 function MainPage() {
 
+
   const [cardData, setCardData] = useState([]) // TODO: consider a context for this variable // Add this to cache/cookies (keep track of entries locally
 
   useEffect(() => {

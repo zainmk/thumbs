@@ -15,6 +15,7 @@ import LetterAvatars from './Avatar';
 import users from "../fake-database/userDatabase.json";
 import image from '../fake-database/pigeon.jpg';
 
+
 export default function ProfileDrawer() {
 
 
@@ -46,7 +47,10 @@ export default function ProfileDrawer() {
         <div style={{ textAlign: "center"}}>
           <p>{findingUser(users,"10000001").name}</p>
           <img src={image} alt='relevant description' />
-          <p>{findingUser(users,"10000001").profileDescription}</p>
+          <p>{"Nothing"}</p>
+
+
+
         </div>
       <Divider />
       </List>
