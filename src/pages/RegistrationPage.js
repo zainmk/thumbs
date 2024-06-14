@@ -9,7 +9,7 @@ import {addUser} from '../helpers/database.js';
 
 import { useNavigate } from "react-router-dom"
 
-function LoginPage() {
+function RegistrationPage() {
 
     const navigate = useNavigate();
 
@@ -25,31 +25,43 @@ function LoginPage() {
     
         console.log("Creating Account Form Button Clicked!")
 
-        //create dummy filligns for other rquried data entries and create a userData object
-        const newUserDOB = "Jan, 1, 1800";
-        const newUserProfileDescription = "oneDay...";
-        const newUserID = Math.floor(Math.random() * (99999999 - 11111111) + 11111111)
+        //checking for white spaces
+        const containsWhitespace = str => /\s/.test(str);
         
-        //Create an Object
-        const newUser = {};
+        //making suer username and passwor dinputs are validated
+        if (containsWhitespace(usernameEntry) || containsWhitespace(passwordEntry) || usernameEntry === "" || passwordEntry === "") {
+            alert("Username and password must have no spaces!");
 
-        //Add Properties, some are just dummy properties
-        newUser.name = usernameEntry;
-        newUser.password = passwordEntry;
-        newUser.DateOfBirth = newUserDOB;
-        newUser.profileDescription = newUserProfileDescription;
-        newUser.id = newUserID;
+        }else {
 
-        //addUser to GFirebase Dtabase, function from post.js
-        addUser(newUser);
+            
+            //create dummy filligns for other rquried data entries and create a userData object
+            const newUserDOB = "Jan, 1, 1800";
+            const newUserProfileDescription = "oneDay...";
+            const newUserID = Math.floor(Math.random() * (99999999 - 11111111) + 11111111)
+            
+            //Create an Object
+            const newUser = {};
 
-        navigate('/Login');
+            //Add Properties, some are just dummy properties
+            newUser.name = usernameEntry;
+            newUser.password = passwordEntry;
+            newUser.DateOfBirth = newUserDOB;
+            newUser.profileDescription = newUserProfileDescription;
+            newUser.id = newUserID;
+
+            //addUser to GFirebase Dtabase, function from post.js
+            addUser(newUser);
+
+            navigate('/login');
+        }
     };
 
 
     return (
             <Box sx={{ display: 'flex', alignItems: "center", justifyContent: "center", backgroundImage: 'url(./thumbs.png)', height: "100vh", width: "100wh" }} >
                 <Paper elevation={24} sx={{ display: 'flex', flexDirection: "column", gap: "24px", padding: "120px 40px 120px 40px" }}>
+                <Button variant="contained" onClick={() => navigate('/login')}>Back</Button>
                 <Typography
                     variant="h4"
                 >
@@ -72,7 +84,7 @@ function LoginPage() {
         </Box>
     )
 }
-export default LoginPage;
+export default RegistrationPage;
 
 
 /*
