@@ -1,10 +1,10 @@
-import { storeUserKey } from "./userStore";
-
 const FIREBASE_USERS = 'https://thumbsapp-748bd-default-rtdb.firebaseio.com/users.json';
 
 export const getAllUsers = async() => fetch(FIREBASE_USERS).then(res => res.json())
 
 export async function addUser(userData) {
+
+  // TODO: check for uniqeuness 
 
   const options = {
     method: 'POST',
@@ -18,7 +18,7 @@ export async function addUser(userData) {
   const data = await response.json();
 
   if (!response.ok) {
-    throw new Error(data.message || 'Could not create quote.');
+    throw new Error(data.message || 'Could not create user.');
   } else {
       console.log("Success!!!", data)
   }
@@ -29,16 +29,8 @@ export async function authenticateUser(userData) { // TODO: authenticate by vali
 
   const { name, password } = userData;
   const allUserData = await getAllUsers();
-  const userKeys = Object.keys( allUserData ); 
-
-  for (let i = 0; i < userKeys.length; i ++) {
-    if ((allUserData[userKeys[i]].name === name) && (allUserData[userKeys[i]].password === password)) {
-      storeUserKey(userKeys[i]) 
-      return userKeys[i];
-    }
-  }
-
-  return null;
+  const results = Object.keys(allUserData).filter(userKey => (allUserData[userKey].name === name && allUserData[userKey].password === password))
+  return results.length === 1 ? results[0] : null
 
 }
 

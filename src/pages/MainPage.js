@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import Button from '@mui/material/Button';
 
 import TitleBar from '../components/TitleBar.js';
-
 import CardList from '../components/CardList.js';
 
 
@@ -11,8 +10,7 @@ import CardList from '../components/CardList.js';
 
 function MainPage() {
 
-
-  const [cardData, setCardData] = useState([]) // TODO: consider a context for this variable // Add this to cache/cookies (keep track of entries locally
+  const [cardData, setCardData] = useState([]) // TODO: consider a context for this variable
 
   useEffect(() => {
     if(cardData.length !== 0){
