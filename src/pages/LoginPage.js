@@ -15,48 +15,29 @@ function LoginPage() {
 
     const navigate = useNavigate();
 
-    //Making states to capture values
-    const [usernameEntry, setUsernameEntry] = useState("Alan");
-    const [passwordEntry, setPasswordEntry] = useState("Alan");
+    const [usernameEntry, setUsernameEntry] = useState("");
+    const [passwordEntry, setPasswordEntry] = useState("");
 
+    const onLogin = () => { // maybe change to useCallback => [usernameEntry, passwordEntry]
 
+        if (usernameEntry === "" || passwordEntry === "") { // bound check user input
+            alert("Enter a name and password")
+        } 
+        else {
+            
+            const userEntry = { name: usernameEntry, password: passwordEntry }
+            authenticateUser(userEntry).then(res => {
+                if(res) {
+                    storeUserKey(res); // TODO: Store within an app-wide context, to be used throughout
+                    navigate('/');
+                } else {
+                    alert("Wrong Credentials, Try Again!");
+                    setUsernameEntry("");
+                    setPasswordEntry("");
+                }
+            })
+        }
 
-    //When they click LOGIN button, what happens, thye sumbit login FORM
-    const submitFormHandler = (event) => {
-        event.preventDefault();
-
-        console.log("Logining In Account Form Button Clicked!")
-
-        //Create an Object
-        const userData = {};
-
-        //Add Properties, some are just dummy properties
-        userData.name = usernameEntry;
-        userData.password = passwordEntry;
-
-          if (usernameEntry === "" || passwordEntry === "") {
-            alert("Enter name and password")
-          } else {
-
-        
-
-
-        let userKey;
-
-        //A promise .than chain, wait for them to get the whole anwer, than proceed with infor throughout this function
-        //Function im calling, has alot of waiting time
-        authenticateUser(userData).then(res => console.log(userKey=res)).then(function(value) {
-            if(userKey) {
-                storeUserKey(userKey);
-                navigate('/',{userKey : userKey});
-            } else {
-                alert("Wrong Credentials, Try Again!");
-                setUsernameEntry("");
-                setPasswordEntry("");
-            }
-        })
-
-      }
     };
 
     return (
@@ -64,6 +45,7 @@ function LoginPage() {
         <Paper elevation={24} sx={{ display: 'flex', flexDirection: "column", gap: "24px", padding: "120px 40px 120px 40px" }}>
         <Typography
             variant="h4"
+            align="center"
         >
             Login
         </Typography>
@@ -79,11 +61,11 @@ function LoginPage() {
             onChange={event => setPasswordEntry(event.target.value)}
             label="Password"
         />
+        <Button variant="contained" onClick={ onLogin }>
+            Login
+        </Button>
         <Button variant="contained" onClick={() => navigate('/registration')}>
             Create Account
-        </Button>
-        <Button variant="contained" onClick={submitFormHandler}>
-            Login
         </Button>
         </Paper>
     </Box>
