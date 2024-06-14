@@ -25,13 +25,15 @@ function RegistrationPage() {
     
         console.log("Creating Account Form Button Clicked!")
 
-        //checking for white spaces
+        //checking for white spaces and 
         const containsWhitespace = str => /\s/.test(str);
-        
-        //making suer username and passwor dinputs are validated
-        if (containsWhitespace(usernameEntry) || containsWhitespace(passwordEntry) || usernameEntry === "" || passwordEntry === "") {
-            alert("Username and password must have no spaces!");
+        const containsLettersAndNumbers = str => /^[A-Za-z0-9]*$/.test(str);
 
+        //making suer username and passwor dinputs are validated
+        if (containsWhitespace(usernameEntry) || containsWhitespace(passwordEntry) || !containsLettersAndNumbers(passwordEntry) || !containsLettersAndNumbers(usernameEntry) ||usernameEntry === "" || passwordEntry === "") {
+            alert("Username and password must have no spaces or special charactors!");
+            setUsernameEntry("");
+            setPasswordEntry("");
         }else {
 
             
