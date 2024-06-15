@@ -1,53 +1,17 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 
-function Cards({ onDelete, data }){
-
-    const [image, setImage] = useState()
-
-    useEffect(() => {
-
-        if(data.Poster && data.Poster !== 'N/A'){
-            fetch(data.Poster)
-                .then(res => res.blob())
-                .then(res => URL.createObjectURL(res))
-                .then(res => setImage(res))
-        }
-        
-    }, [data])
-
+function Cards({ onDelete, type }){
 
     return ( 
-    <Card className="cards" sx={{ margin:"20px", width: "80%" }}> {/* TODO: MAKE A CARD WRAPPER COMPONENT */}
-        <CardContent sx={{ display: "flex", gap:"20px", flexDirection: "row" }}> 
-            <Box>
-                <Paper elevation={24} sx={{ width :"120px" }}> 
-                    <img alt={''} src={ image } style={{ width:"100%" }} />
-                </Paper>
-            </Box>
-            <Box>
-                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                    {data.Type}
-                </Typography>
-                <Typography variant="h5" component="div">
-                    {data.Title} | ({data.Year})
-                </Typography>
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    artist | director | studio
-                </Typography>
-                <Typography variant="body2">
-                    description of media
-                </Typography>
-            </Box>
+    <Card className="cards" sx={{ margin:"20px", width: "80%" }}>
+        <CardContent>
+            { type }
         </CardContent>
         <CardActions>
             <Button variant='outlined' startIcon={<DeleteIcon />} onClick={ onDelete }>

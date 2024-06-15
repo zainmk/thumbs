@@ -20,7 +20,7 @@ function LoginPage() {
 
     const onLogin = () => { // maybe change to useCallback => [usernameEntry, passwordEntry]
 
-        if (usernameEntry === "" || passwordEntry === "") { // bound check user input
+        if (usernameEntry === "" || passwordEntry === "") { // TODO: Add bounding check user input as a helper function
             alert("Enter a name and password")
         } 
         else {
@@ -55,7 +55,7 @@ function LoginPage() {
             onChange={event => setUsernameEntry(event.target.value)}
             label="Username"
         />
-            <TextField
+        <TextField
             required
             value={passwordEntry}
             onChange={event => setPasswordEntry(event.target.value)}
