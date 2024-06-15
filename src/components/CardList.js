@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import SearchCard from './SearchCard.js';
 
 
+
 function CardList({ cardData, setCardData }){
 
     return (

@@ -39,15 +39,6 @@ function MainPage() {
           <div className="App">
 
 
-            { /*
-                Card Name:  Basic Card Template
-                Description: Has Reason paragraph
-            */}
-            <div style={{border: "1px solid black"}}>
-              <h2>Go to Google Docs for App Planning</h2>
-              <a href="https://docs.google.com/document/d/1YHfOfMTHxckLrYp10GOTC3uVzykLQSCbtJKRlVOhnbg/edit?usp=sharing" target="_blank" rel="noopener noreferrer"><Button variant="contained">Go to Google Docs For APP Planning Document</Button></a>
-            </div>
-
 
             { /*
                 Card Name:  Basic Card Template
