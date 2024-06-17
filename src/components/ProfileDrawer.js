@@ -35,9 +35,6 @@ export default function ProfileDrawer() {
 
   }, [userIDValue]);
 
-  useEffect(()=> console.log(userData), [userData])
-
-
 
   const [open, setOpen] = useState(false);
 
