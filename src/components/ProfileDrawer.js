@@ -15,7 +15,30 @@ import MailIcon from '@mui/icons-material/Mail';
 import LetterAvatars from './Avatar';
 
 
-export default function ProfileDrawer() {
+import { useContext, useEffect } from 'react';
+import { Context } from '../helpers/userContext';
+
+import { recallUserData } from '../helpers/database';
+
+
+export default function ProfileDrawer(userID) {
+
+  //Context trying, return basic user key
+  const userIDValue = useContext(Context);
+
+  console.log(recallUserData(userIDValue));
+
+
+   useEffect(() => {
+    const fetchData = async()=> {
+      const data = await recallUserData(userIDValue)()
+
+      console.log(data)
+    }
+    fetchData()
+    }, [userIDValue]);
+
+
 
   const [open, setOpen] = useState(false);
 
@@ -25,7 +48,9 @@ export default function ProfileDrawer() {
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer}>
       <List>
         <div style={{ textAlign: "center"}}>
-          <p>name</p>
+
+          {/*data.name*/}
+
           <img src={'/thumbs.png'} alt='user avatar' width={'125px'} />
           <p> profile info </p>
         </div>
