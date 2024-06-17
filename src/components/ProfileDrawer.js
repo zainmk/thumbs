@@ -46,8 +46,8 @@ export default function ProfileDrawer() {
         <div style={{ textAlign: "center"}}>
           <p>{ userData?.name } </p>
           <img src={'/thumbs.png'} alt='user avatar' width={'125px'} />
-          <p> {userData.profileDescription} </p>
-          <p> {userData.DateOfBirth} </p>
+          <p> {userData?.profileDescription} </p>
+          <p> {userData?.DateOfBirth} </p>
         </div>
       <Divider />
       </List>
