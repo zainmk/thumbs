@@ -14,29 +14,28 @@ import MailIcon from '@mui/icons-material/Mail';
 
 import LetterAvatars from './Avatar';
 
-
 import { useContext, useEffect } from 'react';
 import { Context } from '../helpers/userContext';
 
 import { recallUserData } from '../helpers/database';
 
 
-export default function ProfileDrawer(userID) {
+export default function ProfileDrawer() {
+
+  const [userData, setUserData] = useState();
 
   //Context trying, return basic user key
   const userIDValue = useContext(Context);
 
-  console.log(recallUserData(userIDValue));
+  useEffect(() => {
 
-
-   useEffect(() => {
-    const fetchData = async()=> {
-      const data = await recallUserData(userIDValue)()
-
-      console.log(data)
+    if(userIDValue){
+      recallUserData(userIDValue).then((res) => setUserData(res))
     }
-    fetchData()
-    }, [userIDValue]);
+
+  }, [userIDValue]);
+
+  useEffect(()=> console.log(userData), [userData])
 
 
 
@@ -48,11 +47,10 @@ export default function ProfileDrawer(userID) {
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer}>
       <List>
         <div style={{ textAlign: "center"}}>
-
-          {/*data.name*/}
-
+          <p>{ userData?.name } </p>
           <img src={'/thumbs.png'} alt='user avatar' width={'125px'} />
-          <p> profile info </p>
+          <p> {userData.profileDescription} </p>
+          <p> {userData.DateOfBirth} </p>
         </div>
       <Divider />
       </List>

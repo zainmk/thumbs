@@ -35,8 +35,6 @@ function MainPage() {
 
           <div className="App">
 
-
-
             { /*
                 Card Name:  Basic Card Template
                 Description: Has basic paragraph
