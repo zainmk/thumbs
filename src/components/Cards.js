@@ -14,9 +14,9 @@ function Cards({ onDelete, type }){
             { type }
         </CardContent>
         <CardActions>
-            <Button variant='outlined' startIcon={<DeleteIcon />} onClick={ onDelete }>
+            { onDelete && <Button variant='outlined' startIcon={<DeleteIcon />} onClick={ onDelete }>
                 Delete
-            </Button>
+            </Button> }
         </CardActions>
     </Card>
     )

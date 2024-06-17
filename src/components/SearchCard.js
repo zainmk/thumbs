@@ -2,13 +2,10 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 
 import SearchIcon from '@mui/icons-material/Search';
-import Card from '@mui/material/Card';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 import IconButton from '@mui/material/IconButton';
-
-import CardContent from '@mui/material/CardContent';
 
 import AddIcon from '@mui/icons-material/Add';
 
@@ -80,41 +77,38 @@ function SearchCard({ setCardData }){
     }, [searchText])
 
     return (
-        <Card sx={{ margin:"20px", width: "80%" }}>
-            <CardContent>
-                <AddIcon />
-                <Search> 
-                    <SearchIconWrapper>
-                        <SearchIcon />
-                    </SearchIconWrapper>
-                    <StyledInputBase
-                        value={searchText}
-                        onChange={(event) => setSearchText(event.target.value)}
-                        placeholder="Search..."
-                    />  
-                </Search>
-                {searchData.length > 0 && <Table>
-                    <TableBody>
-                        {searchData.map((result) => (
-                            <TableRow key={result.imdbID}>
-                                <TableCell >{result.Title}</TableCell>
-                                <TableCell >{result.Year}</TableCell>
-                                <TableCell >{result.Type}</TableCell>
-                                <TableCell> 
-                                    <IconButton size='small' onClick={()=> {
-                                        setCardData((cardData) => [result, ...cardData])
-                                        setSearchData([])
-                                    }}>
-                                        <LibraryAddIcon />
-                                    </IconButton>
-                                </TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>}
-            </CardContent>
-        </Card>
-        
+        <>
+            <AddIcon />
+            <Search> 
+                <SearchIconWrapper>
+                    <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                    value={searchText}
+                    onChange={(event) => setSearchText(event.target.value)}
+                    placeholder="Search..."
+                />  
+            </Search>
+            {searchData.length > 0 && <Table>
+                <TableBody>
+                    {searchData.map((result) => (
+                        <TableRow key={result.imdbID}>
+                            <TableCell >{result.Title}</TableCell>
+                            <TableCell >{result.Year}</TableCell>
+                            <TableCell >{result.Type}</TableCell>
+                            <TableCell> 
+                                <IconButton size='small' onClick={()=> {
+                                    setCardData((cardData) => [result, ...cardData])
+                                    setSearchData([])
+                                }}>
+                                    <LibraryAddIcon />
+                                </IconButton>
+                            </TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>}
+        </>
     )
 }
 

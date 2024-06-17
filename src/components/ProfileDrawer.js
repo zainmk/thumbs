@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
@@ -12,48 +13,21 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 
 import LetterAvatars from './Avatar';
-import users from "../fake-database/userDatabase.json";
-import image from '../fake-database/pigeon.jpg';
-
-
-
 
 
 export default function ProfileDrawer() {
 
+  const [open, setOpen] = useState(false);
 
-  //Can make this function a global fnciton, used wheneevr you have to deal with user database!!!
-  //You enter the users array of objects, and enter userID for user you want, RETURNS users information in an object
-  function findingUser(users, userID="10000001") {
-    var results = [];
-    var searchVal = userID;
-
-    for (var i=0 ; i < users.users.length ; i++)
-    {
-        if (users.users[i]["id"] === searchVal) {
-            results.push(users.users[i]);
-        }
-    }
-    return results[0];
-  }
-
-
-  const [open, setOpen] = React.useState(false);
-
-  const toggleDrawer = (newOpen) => () => {
-    setOpen(newOpen);
-  };
+  const toggleDrawer = ()=> setOpen(!open)
 
   const DrawerList = (
-    <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
+    <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer}>
       <List>
         <div style={{ textAlign: "center"}}>
-          <p>{findingUser(users,"10000001").name}</p>
-          <img src={image} alt='relevant description' />
-          <p>{"Nothing"}</p>
-
-
-
+          <p>name</p>
+          <img src={'/thumbs.png'} alt='user avatar' width={'125px'} />
+          <p> profile info </p>
         </div>
       <Divider />
       </List>
@@ -74,8 +48,8 @@ export default function ProfileDrawer() {
 
   return (
     <div>
-      <Button onClick={toggleDrawer(true)}><LetterAvatars/></Button>
-      <Drawer open={open} onClose={toggleDrawer(false)}>
+      <Button onClick={toggleDrawer}><LetterAvatars/></Button>
+      <Drawer open={open} onClose={toggleDrawer}>
         {DrawerList}
       </Drawer>
     </div>

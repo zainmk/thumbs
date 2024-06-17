@@ -27,7 +27,6 @@ function MainPage() {
   return (
     <div style={{flex: 60, border: "2px solid black"}} className='MainPage'>
       <TitleBar />
-
         <div style={{ border: "2px solid black" }}>
           <CardList cardData={cardData} setCardData={setCardData} />
           { /*
