@@ -6,6 +6,10 @@ import { deepOrange } from '@mui/material/colors';
 import users from "../fake-database/userDatabase.json";
 
 
+import { useContext, useEffect } from 'react';
+import { Context } from '../helpers/userContext';
+
+
 export default function LetterAvatars(props) {
 
     //Can make this function a global fnciton, used wheneevr you have to deal with user database!!!
@@ -28,7 +32,7 @@ export default function LetterAvatars(props) {
   return (
     <Stack direction="row" spacing={2}>
 
-      <Avatar sx={{ bgcolor: deepOrange[500] }}>{findingUser(users,"10000001").name.substring(0,1)}</Avatar>
+      <Avatar sx={{ bgcolor: deepOrange[500] }}>{"A"}</Avatar>
     </Stack>
   );
 }

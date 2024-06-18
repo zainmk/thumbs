@@ -20,7 +20,6 @@ function CardList({ cardData, setCardData }){
         })}
     </Box>
     )
-
 }
 
 export default CardList;
