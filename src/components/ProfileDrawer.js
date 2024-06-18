@@ -47,7 +47,6 @@ export default function ProfileDrawer() {
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer}>
       <List>
         <div style={{ textAlign: "center"}}>
-          <p>The user ID: {userID}</p>
           <p>{ userData?.name } </p>
           <img src={'/thumbs.png'} alt='user avatar' width={'125px'} />
           <p> {userData?.profileDescription} </p>
