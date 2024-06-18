@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import { Typography } from "@mui/material";
@@ -9,7 +9,8 @@ import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom"
 
 import { authenticateUser } from "../helpers/database.js";
-import { storeUserKey } from '../helpers/userStore.js';
+
+import { Context } from '../helpers/userContext';
 
 function LoginPage() {
 
@@ -17,6 +18,8 @@ function LoginPage() {
 
     const [usernameEntry, setUsernameEntry] = useState("");
     const [passwordEntry, setPasswordEntry] = useState("");
+
+    const [,setUserID] = useContext(Context); //To use context to store userID accross app
 
     const onLogin = () => { // maybe change to useCallback => [usernameEntry, passwordEntry]
 
@@ -28,7 +31,7 @@ function LoginPage() {
             const userEntry = { name: usernameEntry, password: passwordEntry }
             authenticateUser(userEntry).then(res => {
                 if(res) {
-                    storeUserKey(res); // TODO: Store within an app-wide context, to be used throughout
+                    setUserID(res)
                     navigate('/');
                 } else {
                     alert("Wrong Credentials, Try Again!");
