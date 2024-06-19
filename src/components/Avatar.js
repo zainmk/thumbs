@@ -4,54 +4,28 @@ import Stack from '@mui/material/Stack';
 import { deepOrange } from '@mui/material/colors';
 
 import { useContext, useEffect, useState } from 'react';
-import { Context } from '../helpers/userContext';
+import { UserContext } from '../helpers/userContext';
 
-import { recallUserData } from '../helpers/database';
-
-
-export default function LetterAvatars(props) {
+import { getUserData } from '../helpers/database';
 
 
-  const [userID] = useContext(Context); //Improting userID from context
+export default function LetterAvatars() {
 
+  const { userID } = useContext(UserContext);
+  const [ userName, setUserName ] = useState("");
 
-    //Context trying, return basic user key
-    const userIDValue = userID;
-    const [userData, setUserData] = useState({name:" "});
+  useEffect(() => {
 
-    useEffect(() => {
-  
-      if(userIDValue){
-        recallUserData(userIDValue).then((res) => setUserData(res))
-      }
-  
-    }, [userIDValue]);
-
-
-
-    //Can make this function a global fnciton, used wheneevr you have to deal with user database!!!
-    //You enter the users array of objects, and enter userID for user you want, RETURNS users information in an object
-    /*
-  function findingUser(users, userID) {
-    var results = [];
-    var searchVal = userID;
-
-    for (var i=0 ; i < users.users.length ; i++)
-    {
-        if (users.users[i]["id"] === searchVal) {
-            results.push(users.users[i]);
-        }
+    if(userID){
+      getUserData(userID).then((res) => setUserName(res.name))
     }
-    return results[0];
-  }
-    */
 
+  }, [userID]);
 
 
   return (
     <Stack direction="row" spacing={2}>
-
-      <Avatar sx={{ bgcolor: deepOrange[500] }}>{userData?.name.substring(0,1)}</Avatar>
+      <Avatar sx={{ bgcolor: deepOrange[500] }}>{userName?.substring(0,1)}</Avatar>
     </Stack>
   );
 }

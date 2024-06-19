@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom"
 
 import { authenticateUser } from "../helpers/database.js";
 
-import { Context } from '../helpers/userContext';
+import { UserContext } from '../helpers/userContext';
 
 function LoginPage() {
 
@@ -19,7 +19,7 @@ function LoginPage() {
     const [usernameEntry, setUsernameEntry] = useState("");
     const [passwordEntry, setPasswordEntry] = useState("");
 
-    const [,setUserID] = useContext(Context); //To use context to store userID accross app
+    const { setUserID } = useContext(UserContext);
 
     const onLogin = () => { // maybe change to useCallback => [usernameEntry, passwordEntry]
 

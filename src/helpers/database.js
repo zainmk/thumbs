@@ -34,11 +34,4 @@ export async function authenticateUser(userData) { // TODO: authenticate by vali
 
 }
 
-
-/*
-Function: With given key, returns all user data with that key
-*/
-//NOT WORKING< IT SENDING back userdata but where its called it getting back a promise...
-export const recallUserData = async(profileKey)=> getAllUsers().then(res => res[profileKey])
-
-
+export const getUserData = async(profileKey)=> getAllUsers().then(res => res[profileKey])

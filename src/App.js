@@ -9,10 +9,8 @@ import RegistrationPage from "./pages/RegistrationPage";
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-
-import { Context } from './helpers/userContext';
+import { UserContext } from './helpers/userContext';
 import { useState } from 'react';
-
 
 
 const darkTheme = createTheme({
@@ -23,11 +21,12 @@ const darkTheme = createTheme({
 
 export default function App() {
 
-  //useCOnext - single user ID, fixed
   const [userID, setUserID] = useState('-O-DkTfzkqhsh9yGyXzG');
 
+  React.useEffect(()=> console.log(userID), [userID])
+
   return (
-    <Context.Provider value={[userID, setUserID]}>
+    <UserContext.Provider value={{ userID, setUserID }}>
       <ThemeProvider theme={darkTheme}>
       <BrowserRouter>
         <Routes>
@@ -37,7 +36,7 @@ export default function App() {
         </Routes>
       </BrowserRouter>
       </ThemeProvider>
-    </Context.Provider>
+    </UserContext.Provider>
   )
 }
 
