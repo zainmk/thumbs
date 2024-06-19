@@ -35,42 +35,6 @@ function MainPage() {
 
           <div className="App">
 
-            { /*
-                Card Name:  Basic Card Template
-                Description: Has basic paragraph
-            */}
-            <div style={{border: "1px solid black"}}>
-              <p> What up neko?</p>
-            </div>
-
-
-            { /*
-                Card Name:  Basic Card Template
-                Description: Has Basic button and paragraph
-            */}
-            <div style={{border: "1px solid black"}}>
-              <p> Card for hacking into the pentagon</p>
-              <h3>trust....</h3>
-              <a href="https://hackertyper.com/" target="_blank" rel="noopener noreferrer"><Button variant="contained">Click Here to Hack into the pentagon!!!!!</Button> </a>
-            </div>
-
-
-            { /*
-                Card Name:  Star Wars API Card
-                Description: Testing to do an api call with star wars api for card
-            */}
-            {/* This is horrible coding thats porbbaly slowing app y a minute, im called HTTP requests 5 times for a simple name, dam bruh. Gordon Ramsey would not be pleased :() */}
-            <div style={{border: "1px solid black"}}>
-              <p> The name of a person in star wars is {httpGet("https://swapi.dev/api/people/" + Math.floor(Math.random() * (4 - 1 + 1)) + 1 ).substring(9,15) + "..."}</p>
-            </div>
-            { /*
-                Card Name:  Dad Jokes API Card
-                Description: Getting alot of api calls
-            */}
-            <div style={{border: "1px solid black"}}>
-              <p>Dad Joke</p>
-              {httpGet("https://api.api-ninjas.com/v1/dadjokes", "'X-Api-Key', '76W31ccV32mSLHBa/VU1vA==VzWQqlIjSZRbUAlu'" ).replace('"joke": ', "")}
-            </div>
           </div>
         </div>
       </div>

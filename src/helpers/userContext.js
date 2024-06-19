@@ -7,7 +7,9 @@ import { createContext } from 'react';
 
 
 let userData = {
-        DateOfBirth: "Jan, 1, 1800",
+        CardData: {
+            Favourites: ""
+        },
         id:55089032,
         name:"Alan",
         password:"Alan",

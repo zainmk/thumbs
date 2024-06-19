@@ -35,7 +35,10 @@ function RegistrationPage() {
             const newUser = {
                 name: usernameEntry,
                 password: passwordEntry,
-                DateOfBirth: "Jan, 1, 1800",
+                CardData: 
+                    {
+                        Favourites: "None"
+                    },
                 profileDescription: "oneDay...",
                 id: Math.floor(Math.random() * (99999999 - 11111111) + 11111111)
             }
