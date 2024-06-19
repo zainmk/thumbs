@@ -25,7 +25,7 @@ export default function LetterAvatars() {
 
   return (
     <Stack direction="row" spacing={2}>
-      <Avatar sx={{ bgcolor: deepOrange[500] }}>{userName?.substring(0,1)}</Avatar>
+      <Avatar sx={{ bgcolor: deepOrange[500] }}>{userName[0]}</Avatar>
     </Stack>
   );
 }
