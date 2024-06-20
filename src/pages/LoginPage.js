@@ -27,7 +27,6 @@ function LoginPage() {
             alert("Enter a name and password")
         } 
         else {
-            
             const userEntry = { name: usernameEntry, password: passwordEntry }
             authenticateUser(userEntry).then(res => {
                 if(res) {
@@ -67,7 +66,7 @@ function LoginPage() {
         <Button variant="contained" onClick={ onLogin }>
             Login
         </Button>
-        <Button variant="contained" onClick={() => navigate('/registration')}>
+        <Button variant="contained" onClick={() => navigate('/register')}>
             Create Account
         </Button>
         </Paper>

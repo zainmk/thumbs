@@ -28,7 +28,6 @@ function MainPage() {
           { /*
             Instructions: Copy the basic Card Template, and paste it at the bttom IN card NewsFeed Div section
             */}
-
           <div className="App">
           </div>
         </div>

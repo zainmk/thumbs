@@ -9,7 +9,7 @@ import {addUser} from '../helpers/database.js';
 
 import { useNavigate } from "react-router-dom"
 
-function RegistrationPage() {
+function RegisterPage() {
 
     const navigate = useNavigate();
 
@@ -85,4 +85,4 @@ function RegistrationPage() {
         </Box>
     )
 }
-export default RegistrationPage;
+export default RegisterPage;
