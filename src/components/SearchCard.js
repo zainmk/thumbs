@@ -96,7 +96,7 @@ function SearchCard({ setCardData }){
                             <TableCell >{result.Title}</TableCell>
                             <TableCell >{result.Year}</TableCell>
                             <TableCell >{result.Type}</TableCell>
-                            <TableCell> 
+                            <TableCell align='right'> 
                                 <IconButton size='small' onClick={()=> {
                                     setCardData((cardData) => [result, ...cardData])
                                     setSearchData([])

@@ -9,10 +9,20 @@ import Button from '@mui/material/Button';
 import ProfileDrawer from './ProfileDrawer';
 
 import { useNavigate } from "react-router-dom"
+import { useContext } from 'react';
+
+import { UserContext } from '../helpers/userContext.js'
 
 export default function TitleBar() {
 
   const navigate = useNavigate();
+  const { setUserID } = useContext(UserContext)
+
+  const onLogout = ()=> {
+    setUserID(null)
+    localStorage.removeItem('user')
+    navigate('/login')
+  }
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -26,7 +36,7 @@ export default function TitleBar() {
               >
                 t h u m b s <ThumbsUpDownTwoTone /> 
               </Typography>
-              <Button color="inherit" onClick={()=> navigate('/login')}>Login</Button>
+              <Button color="inherit" onClick={ onLogout }> Logout </Button>
           </Toolbar>
         </AppBar>
     </Box>

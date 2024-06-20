@@ -55,13 +55,13 @@ function LoginPage() {
             required
             value={usernameEntry}
             onChange={event => setUsernameEntry(event.target.value)}
-            label="Username"
+            label="username"
         />
         <TextField
             required
             value={passwordEntry}
             onChange={event => setPasswordEntry(event.target.value)}
-            label="Password"
+            label="password"
         />
         <Button variant="contained" onClick={ onLogin }>
             Login
