@@ -4,8 +4,7 @@ import { useState, useEffect } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
-import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
-import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button'
 
 import AddIcon from '@mui/icons-material/Add';
 
@@ -57,10 +56,16 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
+
 function SearchCard({ setCardData }){
 
     const [searchText, setSearchText] = useState('');
     const [searchData, setSearchData] = useState([]);
+
+    const onAddSearchEntry = (result)=> {
+        setCardData((cardData) => [result, ...cardData])
+        setSearchData([]) 
+    }
 
     useEffect(()=>{
         if(searchText.length > 3){
@@ -89,22 +94,21 @@ function SearchCard({ setCardData }){
                     placeholder="Search..."
                 />  
             </Search>
-            {searchData.length > 0 && <Table>
+            {searchData.length > 0 && <Table >
                 <TableBody>
                     {searchData.map((result) => (
-                        <TableRow key={result.imdbID}>
+                        <>
+                        <TableRow sx={{ [`& .MuiTableCell-root`]: { border: "none" } }}  key={result.imdbID}>
                             <TableCell >{result.Title}</TableCell>
                             <TableCell >{result.Year}</TableCell>
                             <TableCell >{result.Type}</TableCell>
-                            <TableCell align='right'> 
-                                <IconButton size='small' onClick={()=> {
-                                    setCardData((cardData) => [result, ...cardData])
-                                    setSearchData([])
-                                }}>
-                                    <LibraryAddIcon />
-                                </IconButton>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell colSpan={3} sx={{ paddingTop: "0px", paddingBottom: "25px" }} >
+                                <Button variant='outlined' onClick={()=>onAddSearchEntry(result)} sx={{ width: "100%" }}> + </Button>
                             </TableCell>
                         </TableRow>
+                        </>
                     ))}
                 </TableBody>
             </Table>}
