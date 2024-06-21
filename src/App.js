@@ -20,10 +20,10 @@ const darkTheme = createTheme({
 
 export default function App() {
 
-  const [userID, setUserID] = useState(localStorage.getItem('user')); //TODO: CONSIDER A CUSTOM HOOK
+  const [user, setUser] = useState(localStorage.getItem('user')); //TODO: CONSIDER A CUSTOM HOOK
 
   return (
-    <UserContext.Provider value={{ userID, setUserID }}>
+    <UserContext.Provider value={{ user, setUser }}>
       <ThemeProvider theme={darkTheme}>
         <BrowserRouter>
           <Routes>

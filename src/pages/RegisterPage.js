@@ -5,7 +5,7 @@ import Paper from '@mui/material/Paper';
 import { Typography } from "@mui/material";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import {addUser} from '../helpers/database.js';
+import { createUser, getUser } from '../helpers/database.js';
 
 import { useNavigate } from "react-router-dom"
 
@@ -13,9 +13,9 @@ function RegisterPage() {
 
     const navigate = useNavigate();
 
-    const [usernameEntry, setUsernameEntry] = useState("");
-    const [passwordEntry, setPasswordEntry] = useState("");
-    const [confirmPasswordEntry, setConfirmPasswordEntry] = useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
 
     const onCreateAccount = () => {
 
@@ -23,29 +23,25 @@ function RegisterPage() {
         const valAlphanumeric = str => /^[A-Za-z0-9]*$/.test(str);
 
         // TODO: make 'toasts' for users to display alerts
-        if (valWhitespace(usernameEntry) || valWhitespace(passwordEntry) || !valAlphanumeric(passwordEntry) || !valAlphanumeric(usernameEntry)) {
+        if (valWhitespace(username) || valWhitespace(password) || !valAlphanumeric(password) || !valAlphanumeric(username)) {
             alert("invalid entry, no whitespace or special characters"); 
-            setUsernameEntry("");
-            setPasswordEntry("");
+            setUsername("");
+            setPassword("");
         }
-        else if(usernameEntry === "" || passwordEntry === ""){ alert('username or password is empty') }
-        else if(passwordEntry !== confirmPasswordEntry){ alert('passwords are not the same') }
+        else if(username === "" || password === ""){ alert('username or password is empty') }
+        else if(password !== confirmPassword){ alert('passwords are not the same') }
         else {
 
-            const newUser = {
-                name: usernameEntry,
-                password: passwordEntry,
-                CardData: 
-                    {
-                        Favourites: "None"
-                    },
-                profileDescription: "oneDay...",
-                id: Math.floor(Math.random() * (99999999 - 11111111) + 11111111)
-            }
-
-            addUser(newUser);
-            navigate('/login');
-
+            // check if user already exists
+            getUser(username).then(res => {
+                if(res){
+                    alert('user already exists')
+                }
+                else{
+                    createUser({ username, password });
+                    navigate('/login');
+                }
+            })
         }
     };
 
@@ -61,21 +57,21 @@ function RegisterPage() {
                 </Typography>
                 <TextField
                     required
-                    value={usernameEntry}
-                    onChange={event => setUsernameEntry(event.target.value)}
+                    value={username}
+                    onChange={event => setUsername(event.target.value)}
                     label="username"
                 />
                 <TextField
                     required
-                    value={passwordEntry}
+                    value={password}
                     type="password"
-                    onChange={event => setPasswordEntry(event.target.value)}
+                    onChange={event => setPassword(event.target.value)}
                     label="password"
                 />
                  <TextField
                     required
-                    value={confirmPasswordEntry}
-                    onChange={event => setConfirmPasswordEntry(event.target.value)}
+                    value={confirmPassword}
+                    onChange={event => setConfirmPassword(event.target.value)}
                     label="confirm password"
                     type="password"
                 />

@@ -69,7 +69,6 @@ function SearchCard({ setCardData }){
 
     useEffect(()=>{
         if(searchText.length > 3){
-
             fetch(`https://www.omdbapi.com/?apikey=522792c1&s=${searchText}`)
                 .then(res => res.json())
                 .then(res => res.Response !== 'False' ? res.Search : [])

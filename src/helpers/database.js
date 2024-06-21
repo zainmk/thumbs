@@ -1,37 +1,21 @@
-const FIREBASE_USERS = 'https://thumbsapp-748bd-default-rtdb.firebaseio.com/users.json';
+// Reference for using Firebase RealTime DB -> https://firebase.google.com/docs/database/rest/start
+// TODO: SWITCH TO FIREBASE 'LOCKED' DATABASE TO SECURE
 
-export const getAllUsers = async() => fetch(FIREBASE_USERS).then(res => res.json())
+const FIREBASE_USERS = (path = '') => `https://thumbsapp-748bd-default-rtdb.firebaseio.com/users/${path}.json`
 
-export async function addUser(userData) {
-
-  // TODO: check for uniqeuness 
+export async function createUser({ username, password }) {
+  
+  const entry = { [username]: {
+    password: password
+  }}
 
   const options = {
-    method: 'POST',
-    body: JSON.stringify(userData),
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    method: 'PATCH',
+    body: JSON.stringify(entry),
   }
 
-  const response = await fetch(`${FIREBASE_USERS}`, options);
-  const data = await response.json();
-
-  if (!response.ok) {
-    throw new Error(data.message || 'Could not create user.');
-  } else {
-      console.log("Success!!!", data)
-  }
+  fetch(`${FIREBASE_USERS()}`, options)
   
 }
 
-export async function authenticateUser(userData) { // TODO: authenticate by validating entry existence (failed query = invalid)
-
-  const { name, password } = userData;
-  const allUserData = await getAllUsers();
-  const results = Object.keys(allUserData).filter(userKey => (allUserData[userKey].name === name && allUserData[userKey].password === password))
-  return results.length === 1 ? results[0] : null
-
-}
-
-export const getUserData = async(profileKey)=> getAllUsers().then(res => res[profileKey])
+export const getUser = async(username) => fetch(`${FIREBASE_USERS(username)}`).then(res => res.json())

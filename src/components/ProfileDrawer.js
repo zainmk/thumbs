@@ -12,38 +12,25 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import LetterAvatars from './Avatar';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 
 import { UserContext } from '../helpers/userContext';
 
-import { getUserData } from '../helpers/database';
-
 export default function ProfileDrawer() {
 
-  const { userID } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
-  const [userData, setUserData] = useState();
   const [open, setOpen] = useState(false);
 
   const toggleDrawer = ()=> setOpen(!open)
-
-  useEffect(() => {
-
-    if(userID){
-      getUserData(userID).then((res) => setUserData(res))
-    }
-
-  }, [userID]);
-
 
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer}>
       <List>
         <div style={{ textAlign: "center"}}>
-          <p>{userData?.name} </p>
+          <p> {user} </p>
           <img src={'/thumbs.png'} alt='user avatar' width={'125px'} />
-          <p> {userData?.profileDescription} </p>
-          <p> {userData?.DateOfBirth} </p>
+          <p> 01 / 04 / 1998 </p>
         </div>
       <Divider />
       </List>

@@ -15,10 +15,10 @@ import { UserContext } from '../helpers/userContext.js'
 export default function TitleBar() {
 
   const navigate = useNavigate();
-  const { setUserID } = useContext(UserContext)
+  const { setUser } = useContext(UserContext)
 
   const onLogout = ()=> {
-    setUserID(null)
+    setUser(null)
     localStorage.removeItem('user')
     navigate('/login')
   }

@@ -4,11 +4,11 @@ import { useContext, useEffect } from 'react';
 
 export default function ProtectedRoutes(){
 
-    const { userID } = useContext(UserContext)
+    const { user } = useContext(UserContext)
 
     useEffect(() => {
-        if(!!userID) localStorage.setItem('user', userID)
-    }, [userID]);
+        if(!!user) localStorage.setItem('user', user)
+    }, [user]);
     
-    return userID ? <Outlet/> : <Navigate to='/login'/>
+    return user ? <Outlet/> : <Navigate to='/login'/>
 }
