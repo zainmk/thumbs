@@ -4,7 +4,7 @@ function TextCard(){
 
     return (
         <>
-            <p> hello world ! </p>
+            <p> Welcome to thumbs! Search for the movies you enjoyed and create your favourites list! </p>
         </>
     )
 }
