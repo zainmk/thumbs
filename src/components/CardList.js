@@ -7,7 +7,7 @@ import MediaCard from './MediaCard.js';
 function CardList({ cardData, setCardData }){
 
     return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: "20px", alignItems: "center", backgroundImage:"url('rollinghills.gif')"}}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: "20px", alignItems: "center", }}>
         <Cards type={<SearchCard setCardData={setCardData}/>} />
         {cardData.map((element) => {
             return (

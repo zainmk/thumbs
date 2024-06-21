@@ -103,7 +103,7 @@ function SearchCard({ setCardData }){
                             <TableCell >{result.Year}</TableCell>
                             <TableCell >{result.Type}</TableCell>
                         </TableRow>
-                        <TableRow>
+                        <TableRow key={result.imdbID + "_button"}>
                             <TableCell colSpan={3} sx={{ paddingTop: "0px", paddingBottom: "25px" }} >
                                 <Button variant='outlined' onClick={()=>onAddSearchEntry(result)} sx={{ width: "100%" }}> + </Button>
                             </TableCell>
