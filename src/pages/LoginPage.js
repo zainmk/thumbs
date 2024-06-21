@@ -62,6 +62,7 @@ function LoginPage() {
             value={password}
             onChange={event => setPassword(event.target.value)}
             label="password"
+            type="password"
         />
         <Button variant="contained" onClick={ onLogin }>
             Login

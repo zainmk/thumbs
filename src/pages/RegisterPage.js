@@ -27,6 +27,7 @@ function RegisterPage() {
             alert("invalid entry, no whitespace or special characters"); 
             setUsername("");
             setPassword("");
+            setConfirmPassword("");
         }
         else if(username === "" || password === ""){ alert('username or password is empty') }
         else if(password !== confirmPassword){ alert('passwords are not the same') }

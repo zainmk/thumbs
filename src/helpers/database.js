@@ -3,19 +3,7 @@
 
 const FIREBASE_USERS = (path = '') => `https://thumbsapp-748bd-default-rtdb.firebaseio.com/users/${path}.json`
 
-export async function createUser({ username, password }) {
-  
-  const entry = { [username]: {
-    password: password
-  }}
-
-  const options = {
-    method: 'PATCH',
-    body: JSON.stringify(entry),
-  }
-
-  fetch(`${FIREBASE_USERS()}`, options)
-  
-}
-
-export const getUser = async(username) => fetch(`${FIREBASE_USERS(username)}`).then(res => res.json())
+export const createUser = async({ username, password }) => fetch(FIREBASE_USERS(), { method: 'PATCH', body: JSON.stringify({[username]: { password: password }}) })
+export const getUser = async(user) => fetch(FIREBASE_USERS(user)).then(res => res.json())
+export const getMediaList = async(user) => fetch(FIREBASE_USERS(`${user}/media_list`)).then(res => res.json())
+export const updateMediaList = async(user, newMediaList) => fetch(FIREBASE_USERS(`${user}/media_list`), { method: 'PUT', body: JSON.stringify(newMediaList)})

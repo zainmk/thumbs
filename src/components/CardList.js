@@ -5,25 +5,22 @@ import MediaCard from './MediaCard.js';
 import TextCard from './TextCard.js';
 
 
-function CardList({ cardData, setCardData }){
+function CardList({ mediaList, setMediaList }){
 
     return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: "20px", alignItems: "center", }}>
-        <Cards type={<SearchCard setCardData={setCardData}/>} />
-
+        <Cards type={<SearchCard setMediaList={setMediaList}/>} />
         <Cards type={ <TextCard />} />
-
-        {cardData.map((element) => {
-            return (
-                <Cards 
-                    key={element.imdbID} 
-                    onDelete={()=>setCardData(cardData.filter(entry => entry.Title !== element.Title))} 
-                    type={<MediaCard data={element}/>}
-                />
-            )
-        })}
+        {mediaList?.map((media) => (
+            <Cards 
+                key={media.imdbID} 
+                onDelete={()=> {
+                    setMediaList(mediaList?.filter((entry) => entry.imdbID !== media.imdbID))
+                }} 
+                type={<MediaCard data={media}/>}
+            />
+        ))}
     </Box>
     )
 }
-
 export default CardList;
