@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import SearchCard from './SearchCard.js';
 import MediaCard from './MediaCard.js';
 import TextCard from './cards/TextCard.js';
-import YoutubeVideoCard from './cards/YoutubeVideoCard.js';
+
 
 
 function CardList({ mediaList, setMediaList }){
@@ -12,7 +12,6 @@ function CardList({ mediaList, setMediaList }){
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: "20px", alignItems: "center", }}>
         <Cards type={<SearchCard setMediaList={setMediaList}/>} />
         <Cards type={ <TextCard />} />
-        <Cards type={ <YoutubeVideoCard />} />
         {mediaList?.map((media) => (
             <Cards 
                 key={media.imdbID} 

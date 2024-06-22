@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
+import { Button } from '@mui/material';
+import RecommendIcon from '@mui/icons-material/Recommend';
 
 
 function MediaCard({ data }){
@@ -39,6 +41,10 @@ function MediaCard({ data }){
                 <Typography variant="body2">
                     description of media
                 </Typography>
+                <Box sx={{ display:"flex", flexDirection: "row" }} >
+                    <Button><RecommendIcon/></Button>
+                    <Button sx={{ transform: "rotate(180deg)"}}><RecommendIcon/></Button>
+                </Box>
             </Box>
         </Box>
     )
