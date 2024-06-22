@@ -39,7 +39,7 @@ class YouTubePlayer extends Component {
         <Button onClick={this.handleYouTubeClick}>The Answer to Life</Button>
         {this.state.isClicked && (
           <div>
-            <ReactPlayer url="https://youtu.be/dQw4w9WgXcQ" />
+            <ReactPlayer playing="play" url="https://youtu.be/dQw4w9WgXcQ" />
           </div>
         )}
       </div>
