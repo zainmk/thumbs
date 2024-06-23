@@ -19,6 +19,8 @@ export default YoutubeVideoCard;
 import { Component } from "react";
 import ReactPlayer from "react-player";
 
+// TODO: change this class component to functional
+
 class YouTubePlayer extends Component {
   constructor(props) {
     super(props);
