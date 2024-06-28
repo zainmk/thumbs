@@ -10,7 +10,6 @@ import LibraryTools from './LibraryTools';
 function MediaCard({ data }){
 
     const [image, setImage] = useState()
-
     useEffect(() => {
         if(data.Poster && data.Poster !== 'N/A'){
             fetch(data.Poster)
@@ -42,7 +41,7 @@ function MediaCard({ data }){
                     description of media
                 </Typography>
                 <Box sx={{ display:"flex", flexDirection: "row" }} >
-                    <LibraryTools/>
+                    <LibraryTools mediaID={data.imdbID}/>
                 </Box>
             </Box>
         </Box>
