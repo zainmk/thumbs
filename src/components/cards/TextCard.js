@@ -3,6 +3,21 @@ import MovingComponent from "react-moving-text";
 
 function TextCard(){
 
+
+
+    fetch('https://api.api-ninjas.com/v1/dadjokes', {
+		method: 'GET',
+		headers: {
+			'X-RapidAPI-Key': 'your-rapidapi-key',
+			'X-RapidAPI-Host': 'famous-quotes4.p.rapidapi.com',
+		},
+	})
+		.then(response => response.json())
+		.then(response => console.log(response))
+		.catch(err => console.error(err));
+
+
+
     return (
         <>
         <br/>

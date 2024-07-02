@@ -41,7 +41,7 @@ function MediaCard({ data }){
                     description of media
                 </Typography>
                 <Box sx={{ display:"flex", flexDirection: "row" }} >
-                    <LibraryTools mediaID={data.imdbID}/>
+                    <LibraryTools mediaID={data.imdbID=null ? 0 : data.imdbID}/>
                 </Box>
             </Box>
         </Box>
