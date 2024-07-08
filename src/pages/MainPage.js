@@ -12,10 +12,10 @@ import { getMediaList, updateMediaList } from '../helpers/database.js'
 function MainPage() {
 
   const { user } = useContext(UserContext);
-  const [mediaList, setMediaList] = useState([]) // TODO: consider a context for this variable
+  const [mediaList, setMediaList] = useState() // TODO: consider a context for this variable
 
   useEffect(()=> {
-    getMediaList(user).then(res => setMediaList(res ? res : []))
+    user && getMediaList(user).then(res => setMediaList(res ? res : []))
   }, [user])
 
   useEffect(()=>{
