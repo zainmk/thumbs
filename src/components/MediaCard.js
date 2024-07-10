@@ -7,10 +7,10 @@ import Box from '@mui/material/Box';
 import LibraryTools from './LibraryTools';
 
 
-function MediaCard({ data }){
+
+function MediaCard({ data, watchList, setWatchList }){
 
     const [image, setImage] = useState()
-
     useEffect(() => {
         if(data.Poster && data.Poster !== 'N/A'){
             fetch(data.Poster)
@@ -42,7 +42,7 @@ function MediaCard({ data }){
                     description of media
                 </Typography>
                 <Box sx={{ display:"flex", flexDirection: "row" }} >
-                    <LibraryTools/>
+                    <LibraryTools data={data} watchList={watchList} setWatchList={setWatchList} />
                 </Box>
             </Box>
         </Box>

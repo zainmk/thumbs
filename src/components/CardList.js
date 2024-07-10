@@ -6,7 +6,7 @@ import TextCard from './cards/TextCard.js';
 
 
 
-function CardList({ mediaList, setMediaList }){
+function CardList({ mediaList, setMediaList, watchList, setWatchList }){
 
     // TODO: Add 'loading' state and render image possibly (while cards are loading)
 
@@ -20,7 +20,7 @@ function CardList({ mediaList, setMediaList }){
                 onDelete={()=> {
                     setMediaList(mediaList?.filter((entry) => entry.imdbID !== media.imdbID))
                 }} 
-                type={<MediaCard data={media}/>}
+                type={<MediaCard data={media} watchList={watchList} setWatchList={setWatchList}/>}
             />
         ))}
     </Box>
