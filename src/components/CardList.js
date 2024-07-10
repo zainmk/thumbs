@@ -8,6 +8,8 @@ import TextCard from './cards/TextCard.js';
 
 function CardList({ mediaList, setMediaList }){
 
+    // TODO: Add 'loading' state and render image possibly (while cards are loading)
+
     return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: "20px", alignItems: "center", }}>
         <Cards type={<SearchCard setMediaList={setMediaList}/>} />

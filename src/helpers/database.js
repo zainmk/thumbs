@@ -1,7 +1,4 @@
-// Reference for using Firebase RealTime DB -> https://firebase.google.com/docs/database/rest/start
-
 const AUTH_FIREBASE_USERS = async(path = '') => {
-
     const authToken = await fetch(process.env.REACT_APP_AUTH_URL).then(res => res.text()).catch(err => console.log(err))
     return `https://thumbsapp-748bd-default-rtdb.firebaseio.com/users/${path}.json?access_token=${authToken}`
 }

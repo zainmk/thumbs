@@ -1,9 +1,8 @@
 import * as React from 'react'
 
 import { IconButton } from '@mui/material';
+import PreviewIcon from '@mui/icons-material/Preview';
 import RecommendIcon from '@mui/icons-material/Recommend';
-import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
-
 
 function LibraryTools(){
 
@@ -11,7 +10,7 @@ function LibraryTools(){
         <>
             <IconButton sx={{ transform: "rotate(180deg)" }}> <RecommendIcon/> </IconButton>
             <IconButton> <RecommendIcon/> </IconButton>
-            <IconButton> <LibraryAddIcon/> </IconButton>
+            <IconButton> <PreviewIcon/> </IconButton>
         </>
         
     )
