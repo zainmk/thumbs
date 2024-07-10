@@ -1,9 +1,8 @@
 import * as React from 'react'
 import { useState } from 'react';
 import { IconButton } from '@mui/material';
+import PreviewIcon from '@mui/icons-material/Preview';
 import RecommendIcon from '@mui/icons-material/Recommend';
-import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
-
 import { changeMediaDislikes, changeMediaLikes } from '../helpers/database';
 
 
@@ -36,7 +35,7 @@ function LibraryTools(props){
         <>
             <IconButton  onClick={ dislikeMedia } sx={{ transform: "rotate(180deg)" }}  disabled={isButtonsDisabled}> <RecommendIcon/> </IconButton>
             <IconButton onClick={ likeMedia }  disabled={isButtonsDisabled}> <RecommendIcon/> </IconButton>
-            <IconButton> <LibraryAddIcon/> </IconButton>
+            <IconButton> <PreviewIcon/> </IconButton>
         </>
         
     )
