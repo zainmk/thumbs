@@ -5,6 +5,8 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 
 import LibraryTools from './LibraryTools';
+import { getMediaInfo } from '../helpers/database';
+
 
 
 function MediaCard({ data }){
@@ -42,6 +44,8 @@ function MediaCard({ data }){
                 </Typography>
                 <Box sx={{ display:"flex", flexDirection: "row" }} >
                     <LibraryTools mediaID={data.imdbID=null ? 0 : data.imdbID}/>
+                    <p>Likes:{getMediaInfo.likes}</p>
+                    <p>Dislikes:{getMediaInfo.dislikes}</p>
                 </Box>
             </Box>
         </Box>

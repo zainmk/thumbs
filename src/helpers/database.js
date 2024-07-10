@@ -11,7 +11,7 @@ export const getMediaList = async(user) => fetch(FIREBASE_USERS(`${user}/media_l
 
 
 //TO DO, have to make it so, when you add a media, it checks if its already in records or not. if is than do nothing, if not than add 
-export const updateMediaList = async(user, newMediaList) => fetch(FIREBASE_USERS(`${user}/media_list`), { method: 'PUT', body: JSON.stringify(newMediaList)}).then(console.log(newMediaList)).then(createMediaValues(newMediaList.length()-1))
+export const updateMediaList = async(user, newMediaList) => fetch(FIREBASE_USERS(`${user}/media_list`), { method: 'PUT', body: JSON.stringify(newMediaList)}).then(console.log(newMediaList)).then(createMediaValues(newMediaList[newMediaList.length]))
         const createMediaValues = async(newMedia) => fetch(FIREBASE_RECORDS(`mediaStats/${newMedia.imdbID}`), {method: 'PUT', body: JSON.stringify({"likes": `${0}`, "dislikes": `${0}`})}).then(console.log("It Worked!"))
 
 /* 
@@ -22,7 +22,8 @@ Make a function that, increments the total number of likes for a
 specific movie. Global among users. 
 
 Make a function that, returns the number of likes of a specific
-movie. Global mong users 
+movie. Global mo
+ng users 
 
 */
 
@@ -31,6 +32,7 @@ movie. Global mong users
 
 
 //MUST TRY ALL THIS CODE ONLINE IF IT WORSK OR NOT!!!!
+// SECTION : -------------------------------------------------------------Code with likes and dislikes from user
 
 
 export const getMediaInfo = async(imdbID) => fetch(FIREBASE_RECORDS(`mediaStats/${imdbID}`)).then(res =>res.json())
@@ -100,4 +102,7 @@ export function increaseMediaLikes(imdbID) {
     updateLikes();
 }
     */
+
+
+
 
