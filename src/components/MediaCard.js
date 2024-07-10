@@ -5,11 +5,10 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 
 import LibraryTools from './LibraryTools';
-import { getMediaInfo } from '../helpers/database';
 
 
 
-function MediaCard({ data }){
+function MediaCard({ data, watchList, setWatchList }){
 
     const [image, setImage] = useState()
     useEffect(() => {
@@ -43,9 +42,7 @@ function MediaCard({ data }){
                     description of media
                 </Typography>
                 <Box sx={{ display:"flex", flexDirection: "row" }} >
-                    <LibraryTools mediaID={data.imdbID=null ? 0 : data.imdbID}/>
-                    <p>Likes:{getMediaInfo.likes}</p>
-                    <p>Dislikes:{getMediaInfo.dislikes}</p>
+                    <LibraryTools data={data} watchList={watchList} setWatchList={setWatchList} />
                 </Box>
             </Box>
         </Box>

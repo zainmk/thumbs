@@ -7,40 +7,22 @@ const FIREBASE_RECORDS = (path = '') => `https://thumbsapp-748bd-default-rtdb.fi
 
 export const createUser = async({ username, password }) => fetch(await AUTH_FIREBASE_USERS(), { method: 'PATCH', body: JSON.stringify({[username]: { password: password }}) })
 export const getUser = async(user) => fetch(await AUTH_FIREBASE_USERS(user)).then(res => res.json())
+
 export const getMediaList = async(user) => fetch(await AUTH_FIREBASE_USERS(`${user}/media_list`)).then(res => res.json())
 export const updateMediaList = async(user, newMediaList) => fetch(await AUTH_FIREBASE_USERS(`${user}/media_list`), { method: 'PUT', body: JSON.stringify(newMediaList)})
 
-
-//TO DO, have to make it so, when you add a media, it checks if its already in records or not. if is than do nothing, if not than add 
-export const updateMediaList = async(user, newMediaList) => fetch(FIREBASE_USERS(`${user}/media_list`), { method: 'PUT', body: JSON.stringify(newMediaList)}).then(console.log(newMediaList)).then(createMediaValues(newMediaList[newMediaList.length]))
-        const createMediaValues = async(newMedia) => fetch(FIREBASE_RECORDS(`mediaStats/${newMedia.imdbID}`), {method: 'PUT', body: JSON.stringify({"likes": `${0}`, "dislikes": `${0}`})}).then(console.log("It Worked!"))
-
-/* 
-
-for viewing: 
-
-Make a function that, increments the total number of likes for a 
-specific movie. Global among users. 
-
-Make a function that, returns the number of likes of a specific
-movie. Global mo
-ng users 
-
-*/
+export const getWatchList = async(user) => fetch(await AUTH_FIREBASE_USERS(`${user}/watch_list`)).then(res => res.json())
+export const updateWatchList = async(user, newWatchList) => fetch(await AUTH_FIREBASE_USERS(`${user}/watch_list`), { method: 'PUT', body: JSON.stringify(newWatchList)})
 
 
 
 
 
-//MUST TRY ALL THIS CODE ONLINE IF IT WORSK OR NOT!!!!
-// SECTION : -------------------------------------------------------------Code with likes and dislikes from user
+
 
 
 export const getMediaInfo = async(imdbID) => fetch(FIREBASE_RECORDS(`mediaStats/${imdbID}`)).then(res =>res.json())
-
 export const changeMediaLikesByOne = async(imdbID, currentLikesValue, changeValue) => fetch(FIREBASE_RECORDS(`mediaStats/${imdbID}/`), { method: 'PATCH', body: JSON.stringify({"likes": `${currentLikesValue+changeValue}`})}).then(console.log(`${currentLikesValue+changeValue}`))
-
-
 export function changeMediaLikes(imdbID, change) { 
     let value = 0;
     let currentLikesValue = 0;
@@ -86,24 +68,3 @@ export function changeMediaDislikes(imdbID, change) {
     .then(changeMediaDislikesByOne(imdbID,currentDislikesValue, changeValue))
     //true than it adds one, false and than it subtracts one
 } 
-
-
-
-
-/*
-export function increaseMediaLikes(imdbID) {
-
-    console.log("i am being called")
-
-    const currentLikesValue = async(user) => fetch(FIREBASE_RECORDS(`mediaStats/${imdbID}/likes`)).then(res => console.log(res.json()))
-    
-    console.log("current like for this media is" + currentLikesValue); //checking....
-
-    const updateLikes = async(imdbID) => fetch(FIREBASE_RECORDS(`mediaStats/`), { method: 'PATCH', body: JSON.stringify({[imdbID]: { likes: currentLikesValue + 1 }}) })
-    updateLikes();
-}
-    */
-
-
-
-
