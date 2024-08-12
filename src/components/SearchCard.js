@@ -96,7 +96,6 @@ function SearchCard({ setMediaList }){
                     placeholder="Search..."
                 />  
             </Search>
-            <Button onClick={() => { setSearchText('') }}>|  CLEAR</Button>
             {searchData.length > 0 && <Table >
                 <TableBody>
                     {searchData.map((result, index) => (

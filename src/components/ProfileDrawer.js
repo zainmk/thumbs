@@ -9,9 +9,11 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import LetterAvatars from './Avatar';
+
+import RecommendIcon from '@mui/icons-material/Recommend';
+import PreviewIcon from '@mui/icons-material/Preview';
+
 import { useContext } from 'react';
 
 import { UserContext } from '../helpers/userContext';
@@ -19,9 +21,7 @@ import { UserContext } from '../helpers/userContext';
 export default function ProfileDrawer() {
 
   const { user } = useContext(UserContext);
-
   const [open, setOpen] = useState(false);
-
   const toggleDrawer = ()=> setOpen(!open)
 
   const DrawerList = (
@@ -29,22 +29,21 @@ export default function ProfileDrawer() {
       <List>
         <div style={{ textAlign: "center"}}>
           <p> {user} </p>
-          <img src={'/thumbs.png'} alt='user avatar' width={'125px'} />
-          <p> 01 / 04 / 1998 </p>
+          <img src={'/string.webp'} alt='user avatar' width={'125px'} />
+          <p> Level 1 </p>
         </div>
       <Divider />
       </List>
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
+          <ListItem key={'Likes'} disablePadding>
+            <ListItemButton> <ListItemIcon> <RecommendIcon sx={{ color: '#40ff40' }}/> </ListItemIcon> <ListItemText primary={'Likes'} /></ListItemButton>
           </ListItem>
-        ))}
+          <ListItem key={'Dislikes'} disablePadding>
+            <ListItemButton > <ListItemIcon> <RecommendIcon sx={{ transform: "rotate(180deg)", color: "#ff8080" }}/> </ListItemIcon> <ListItemText primary={'Dislikes'} /></ListItemButton>
+          </ListItem>
+          <ListItem key={'Watchlist'} disablePadding>
+            <ListItemButton> <ListItemIcon> <PreviewIcon sx={{ color: "#8080ff" }}/> </ListItemIcon> <ListItemText primary={'Watchlist'} /></ListItemButton>
+          </ListItem>
       </List>
     </Box>
   );

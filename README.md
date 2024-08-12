@@ -1,18 +1,25 @@
-# Getting Started with thumbs APP
+# thumbs ![thumbs_image](./public/thumbs.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## intro
+The purpose of this application is for users to track the movies/shows/games they've 'experienced' in a memorable manner. The goal is to make the experience interactable as well, including 'Easter Eggs' to unlock new features and a social system to easily add items to your watchlist. There can also be support for additional 'tools' based features and testing.
 
-## Available Scripts: 
+## to develop
+The application uses [ReactJS](https://react.dev/) to render, therefore you will need Node/NPM installed. We use the [MaterialsUI](https://mui.com/material-ui/) for components and styling.
+
+Begin by installing the necessary dependencies...
+
+     `npm install`
+
+Then use the following command to run (w/ react-scripts)...
 
      `npm start`
 
-    Runs the app in the development mode.\
-    Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-    
-    The page will reload when you make changes.\
-    You may also see any lint errors in the console.
-    
-     `npm test`
-    
-     `npm run build`
 
+## to do
+- Create a secure backend to control access to DB.
+- Create a separate development/production environment for stability and manage releases
+- a lot more...
+
+This app is currently in development, can expect instability and drastic changes in the meantime.
+    
+**Last updated 8/12/2024**

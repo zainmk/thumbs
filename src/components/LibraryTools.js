@@ -1,34 +1,10 @@
 import * as React from 'react'
-import { useEffect } from 'react';
 import { IconButton } from '@mui/material';
 import PreviewIcon from '@mui/icons-material/Preview';
 import RecommendIcon from '@mui/icons-material/Recommend';
 
 
 function LibraryTools({ data, watchList, setWatchList }){
-
-    useEffect(()=> {
-        console.log(watchList)
-    }, [watchList])
-
-
-    // const likeMedia = () => {
-    //     console.log("hello I like this")
-    //     console.log("LibraryTools" + props.mediaID)
-    //     changeMediaLikes(props.mediaID, true)
-    //     setButtonsDisabled(true);
-
-    // }
-
-
-    // const dislikeMedia = () => {
-    //     console.log("hello I dislike this")
-    //     console.log(props.mediaID)
-    //     changeMediaDislikes(props.mediaID, true)
-    //     setButtonsDisabled(true);
-
-
-    // }
 
     return (
         <>
