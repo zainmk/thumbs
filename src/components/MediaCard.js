@@ -3,23 +3,38 @@ import { useState, useEffect } from 'react';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
 
 import LibraryTools from './LibraryTools';
 
 
-
-function MediaCard({ data, watchList, setWatchList }){
+function MediaCard({ media, setMediaList }){
 
     const [image, setImage] = useState()
+    const [status, setStatus] = useState(media.status) // A single useState variable to keep all mutually exclusively selected
+
+    // TODO: Consider fixing this hook so it has necessary dependencies but does not rerender too often.
     useEffect(() => {
-        if(data.Poster && data.Poster !== 'N/A'){
-            fetch(data.Poster)
+
+        setMediaList(mediaList => {
+
+            let newMediaList = [ ...mediaList ]
+            const index = mediaList.findIndex( x => x.imdbID === media.imdbID);
+            newMediaList[index]['status'] = status
+            return newMediaList
+
+        })
+
+    }, [status])
+
+    useEffect(() => {
+        if(media.Poster && media.Poster !== 'N/A'){
+            fetch(media.Poster)
                 .then(res => res.blob())
                 .then(res => URL.createObjectURL(res))
                 .then(res => setImage(res))
         }
-        
-    }, [data])
+    }, [media])
 
     return ( 
         <Box sx={{ display: "flex", gap:"20px", flexDirection: "row" }}>
@@ -30,19 +45,14 @@ function MediaCard({ data, watchList, setWatchList }){
             </Box>
             <Box>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                    {data.Type}
+                    {media.Type}
                 </Typography>
                 <Typography variant="h5" component="div">
-                    {data.Title} | ({data.Year})
+                    {media.Title} | ({media.Year})
                 </Typography>
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    artist | director | studio
-                </Typography>
-                <Typography variant="body2">
-                    description of media
-                </Typography>
-                <Box sx={{ display:"flex", flexDirection: "row" }} >
-                    <LibraryTools data={data} watchList={watchList} setWatchList={setWatchList} />
+                <Divider/>
+                <Box sx={{ display:"flex", flexDirection: "row", margin: "5px" }} >
+                    <LibraryTools status={status} setStatus={setStatus} />
                 </Box>
             </Box>
         </Box>

@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
 import List from '@mui/material/List';
@@ -9,18 +10,15 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import LetterAvatars from './Avatar';
-
-import RecommendIcon from '@mui/icons-material/Recommend';
-import PreviewIcon from '@mui/icons-material/Preview';
-
-import { useContext } from 'react';
+import HomeIcon from '@mui/icons-material/Home';
+import Avatar from '@mui/material/Avatar';
 
 import { UserContext } from '../helpers/userContext';
 
 export default function ProfileDrawer() {
 
   const { user } = useContext(UserContext);
+  
   const [open, setOpen] = useState(false);
   const toggleDrawer = ()=> setOpen(!open)
 
@@ -35,14 +33,8 @@ export default function ProfileDrawer() {
       <Divider />
       </List>
       <List>
-          <ListItem key={'Likes'} disablePadding>
-            <ListItemButton> <ListItemIcon> <RecommendIcon sx={{ color: '#40ff40' }}/> </ListItemIcon> <ListItemText primary={'Likes'} /></ListItemButton>
-          </ListItem>
-          <ListItem key={'Dislikes'} disablePadding>
-            <ListItemButton > <ListItemIcon> <RecommendIcon sx={{ transform: "rotate(180deg)", color: "#ff8080" }}/> </ListItemIcon> <ListItemText primary={'Dislikes'} /></ListItemButton>
-          </ListItem>
-          <ListItem key={'Watchlist'} disablePadding>
-            <ListItemButton> <ListItemIcon> <PreviewIcon sx={{ color: "#8080ff" }}/> </ListItemIcon> <ListItemText primary={'Watchlist'} /></ListItemButton>
+          <ListItem key={'home'} disablePadding>
+            <ListItemButton> <ListItemIcon> <HomeIcon /> </ListItemIcon> <ListItemText primary={'HOME'} /></ListItemButton>
           </ListItem>
       </List>
     </Box>
@@ -50,7 +42,11 @@ export default function ProfileDrawer() {
 
   return (
     <div>
-      <Button onClick={toggleDrawer}><LetterAvatars/></Button>
+      <Button onClick={toggleDrawer}>
+        <Stack direction="row" spacing={2}>
+          <Avatar sx={{ color: 'white' }}>{user[0]}</Avatar>
+        </Stack>
+      </Button>
       <Drawer open={open} onClose={toggleDrawer}>
         {DrawerList}
       </Drawer>

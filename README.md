@@ -8,18 +8,15 @@ The application uses [ReactJS](https://react.dev/) to render, therefore you will
 
 Begin by installing the necessary dependencies...
 
-     `npm install`
+     npm install
 
 Then use the following command to run (w/ react-scripts)...
 
-     `npm start`
+     npm start
 
+You will need several keys saved in the appropriate '.env' file. Contact repo owner for these keys.
 
-## to do
-- Create a secure backend to control access to DB.
-- Create a separate development/production environment for stability and manage releases
-- a lot more...
 
 This app is currently in development, can expect instability and drastic changes in the meantime.
     
-**Last updated 8/12/2024**
+**Last updated 8/14/2024**
