@@ -14,18 +14,18 @@ function Cards({ onDelete, type }){
 
     const onDeleteWrapper = () => confirmDelete ? onDelete() : setConfirmDelete(true)
 
-    function handleClickOutside(event) {
-        if(clickRef.current && !clickRef.current.contains(event.target) && confirmDelete){
-            setConfirmDelete(false)
-        }
-    }
-
     useEffect(() => {
+        
+        function handleClickOutside(event) {
+            if(clickRef.current && !clickRef.current.contains(event.target) && confirmDelete){
+                setConfirmDelete(false)
+            }
+        }
 
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside)
         
-    }, [clickRef, handleClickOutside])
+    }, [clickRef, confirmDelete])
 
     return (
     <Card className="cards" sx={{ margin:"20px", width: "80%" }}>
