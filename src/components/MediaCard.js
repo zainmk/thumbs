@@ -17,12 +17,10 @@ function MediaCard({ media, setMediaList }){
     useEffect(() => {
 
         setMediaList(mediaList => {
-
             let newMediaList = [ ...mediaList ]
             const index = mediaList.findIndex( x => x.imdbID === media.imdbID);
             newMediaList[index]['status'] = status
             return newMediaList
-
         })
 
     }, [status])

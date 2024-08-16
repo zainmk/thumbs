@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -8,17 +9,33 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 function Cards({ onDelete, type }){
 
-    return ( 
+    const clickRef = useRef(null)
+    const [confirmDelete, setConfirmDelete] = useState(false)
+
+    const onDeleteWrapper = () => confirmDelete ? onDelete() : setConfirmDelete(true)
+
+    function handleClickOutside(event) {
+        if(clickRef.current && !clickRef.current.contains(event.target) && confirmDelete){
+            setConfirmDelete(false)
+        }
+    }
+
+    useEffect(() => {
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside)
+        
+    }, [clickRef, handleClickOutside])
+
+    return (
     <Card className="cards" sx={{ margin:"20px", width: "80%" }}>
         <CardContent>
             { type }
         </CardContent>
         <CardActions>
-            { onDelete && <Button variant='outlined' startIcon={<DeleteIcon />} onClick={ onDelete }>
-                Delete
-            </Button> }
+            { onDelete && <Button ref={clickRef} variant={confirmDelete ? 'contained' : 'outlined'} startIcon={<DeleteIcon />} color="error" onClick={ onDeleteWrapper } sx={{ width: "100%"  }} /> }
         </CardActions>
-    </Card>
+    </Card> 
     )
 
 }
