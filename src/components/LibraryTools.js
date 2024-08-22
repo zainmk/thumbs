@@ -11,7 +11,7 @@ function LibraryTools({ status, setStatus }){
 
     return (
         <>
-            <ToggleButtonGroup sx={{ marginTop: "10px" }} size="small" value={status} exclusive onChange={(event, newStatus) => setStatus(newStatus === status ? '' : newStatus)}>
+            <ToggleButtonGroup size="small" value={status} exclusive onChange={(event, newStatus) => setStatus(newStatus === status ? '' : newStatus)}>
                 <ToggleButton value={"dislike"} sx={{ transform: "rotate(180deg)" }}>
                     <RecommendIcon />
                 </ToggleButton>

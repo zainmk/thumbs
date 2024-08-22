@@ -28,7 +28,7 @@ function Cards({ onDelete, type }){
     }, [clickRef, confirmDelete])
 
     return (
-    <Card className="cards" sx={{ margin:"20px", width: "80%" }}>
+    <Card sx={{ margin:"20px", width: "80%" }}>
         <CardContent>
             { type }
         </CardContent>

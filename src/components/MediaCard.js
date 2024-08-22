@@ -35,21 +35,21 @@ function MediaCard({ media, setMediaList }){
     }, [media])
 
     return ( 
-        <Box sx={{ display: "flex", gap:"20px", flexDirection: "row" }}>
+        <Box sx={{ display: "flex", gap:"20px" }}>
             <Box>
                 <Paper elevation={24} sx={{ width :"120px" }}> 
                     <img alt={''} src={ image } style={{ width:"100%" }} />
                 </Paper>
             </Box>
-            <Box>
-                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
+                <Typography sx={{ fontSize: 14 }} color="text.secondary">
                     {media.Type}
                 </Typography>
                 <Typography variant="h5" component="div">
                     {media.Title} | ({media.Year})
                 </Typography>
                 <Divider/>
-                <Box sx={{ display:"flex", flexDirection: "row", margin: "5px" }} >
+                <Box sx={{ marginTop: "auto" }}>
                     <LibraryTools status={status} setStatus={setStatus} />
                 </Box>
             </Box>
