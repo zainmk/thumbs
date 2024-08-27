@@ -2,15 +2,16 @@ import Cards from './Cards.js';
 import Box from '@mui/material/Box';
 import SearchCard from './SearchCard.js';
 import MediaCard from './MediaCard.js';
+import CircularProgress from '@mui/material/CircularProgress';
 
-function CardList({ mediaList, setMediaList }){
+function CardList({ mediaList, setMediaList, isLoading }){
 
     // TODO: Add 'loading' state and render image possibly (while cards are loading)
 
     return (
     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: "center" }}>
         <Cards type={<SearchCard setMediaList={setMediaList}/>} />
-        {mediaList?.map((media) => (
+        {isLoading ? <CircularProgress /> : mediaList?.map((media) => (
             <Cards 
                 key={media.imdbID} 
                 onDelete={ ()=> setMediaList(mediaList?.filter((entry) => entry.imdbID !== media.imdbID)) } 

@@ -13,9 +13,19 @@ function MainPage() {
 
   const { user } = useContext(UserContext);
   const [mediaList, setMediaList] = useState() // TODO: consider a context for this variable
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(()=> {
-    user && getMediaList(user).then(res => setMediaList(res ? res : []))
+
+    setIsLoading(true)
+    
+    if(user){
+      getMediaList(user).then(res => {
+        setMediaList(res ? res : [])
+        setIsLoading(false)
+      })
+
+    }
   }, [user])
 
   useEffect(()=>{
@@ -26,7 +36,7 @@ function MainPage() {
       <Box sx={{ display: 'flex', flexDirection: 'column', height:"100vh" }}>
         <TitleBar  />
         <Box sx={{ flex: 1, backgroundImage:"url('rollinghills.gif')" }}>
-          <CardList mediaList={mediaList} setMediaList={setMediaList} />
+          <CardList mediaList={mediaList} setMediaList={setMediaList} isLoading={isLoading} />
         </Box>
       </Box>
   );
