@@ -49,7 +49,7 @@ function MediaCard({ media, setMediaList }){
                     {media.Title} | ({media.Year})
                 </Typography>
                 <Divider/>
-                <Box sx={{ marginTop: "auto" }}>
+                <Box sx={{ marginTop: "10px" }}>
                     <LibraryTools status={status} setStatus={setStatus} />
                 </Box>
             </Box>

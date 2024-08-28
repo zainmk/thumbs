@@ -6,8 +6,6 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 function CardList({ mediaList, setMediaList, isLoading }){
 
-    // TODO: Add 'loading' state and render image possibly (while cards are loading)
-
     return (
     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: "center" }}>
         <Cards type={<SearchCard setMediaList={setMediaList}/>} />

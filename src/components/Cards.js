@@ -33,7 +33,16 @@ function Cards({ onDelete, type }){
             { type }
         </CardContent>
         <CardActions>
-            { onDelete && <Button ref={clickRef} variant={confirmDelete ? 'contained' : 'outlined'} startIcon={<DeleteIcon />} color="error" onClick={ onDeleteWrapper } sx={{ width: "100%"  }} /> }
+            { onDelete && 
+                <Button
+                    ref={clickRef} 
+                    variant={confirmDelete ? 'contained' : 'outlined'} 
+                    startIcon={<DeleteIcon />} 
+                    color="error" 
+                    onClick={ onDeleteWrapper }
+                    sx={{ width: "100%" }}
+                /> 
+            }
         </CardActions>
     </Card> 
     )
