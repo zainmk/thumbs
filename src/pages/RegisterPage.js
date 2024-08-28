@@ -40,6 +40,7 @@ function RegisterPage() {
                 }
                 else{
                     createUser({ username, password });
+                    alert('welcome to thumbs! - ' + username)
                     navigate('/login');
                 }
             })
