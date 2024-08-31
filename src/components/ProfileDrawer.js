@@ -1,17 +1,9 @@
 import * as React from 'react';
 import { useState, useContext } from 'react';
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import HomeIcon from '@mui/icons-material/Home';
-import Avatar from '@mui/material/Avatar';
+import { Box, Stack, Drawer, Button, List, Divider, ListItem, ListItemButton, ListItemIcon, ListItemText, Avatar } from '@mui/material'
+import PreviewIcon from '@mui/icons-material/Preview';
+import RecommendIcon from '@mui/icons-material/Recommend';
+import ListIcon from '@mui/icons-material/List';
 
 import { UserContext } from '../helpers/userContext';
 
@@ -27,14 +19,23 @@ export default function ProfileDrawer() {
       <List>
         <div style={{ textAlign: "center"}}>
           <p> {user} </p>
-          <img src={'/string.webp'} alt='user avatar' width={'125px'} />
+          <img src={'/thumbs.png'} alt='user avatar' width={'125px'} />
           <p> Level 1 </p>
         </div>
       <Divider />
       </List>
       <List>
-          <ListItem key={'home'} disablePadding>
-            <ListItemButton> <ListItemIcon> <HomeIcon /> </ListItemIcon> <ListItemText primary={'HOME'} /></ListItemButton>
+          <ListItem key={'all'} disablePadding>
+            <ListItemButton> <ListItemIcon> <ListIcon /> </ListItemIcon> <ListItemText primary={'All'} /></ListItemButton>
+          </ListItem>
+          <ListItem key={'likes'} disablePadding>
+            <ListItemButton> <ListItemIcon> <RecommendIcon /> </ListItemIcon> <ListItemText primary={'Likes'} /></ListItemButton>
+          </ListItem>
+          <ListItem key={'dislikes'} disablePadding>
+            <ListItemButton> <ListItemIcon > <RecommendIcon sx={{ transform: "rotate(180deg)" }} /> </ListItemIcon> <ListItemText primary={'Dislikes'} /></ListItemButton>
+          </ListItem>
+          <ListItem key={'watchlist'} disablePadding>
+            <ListItemButton> <ListItemIcon> <PreviewIcon /> </ListItemIcon> <ListItemText primary={'Watchlist'} /></ListItemButton>
           </ListItem>
       </List>
     </Box>

@@ -47,12 +47,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
       // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)})`,
       transition: theme.transitions.create('width'),
-      [theme.breakpoints.up('sm')]: {
-        width: '12ch',
-        '&:focus': {
-          width: '20ch',
-        },
-      },
     },
 }));
 
@@ -99,18 +93,18 @@ function SearchCard({ setMediaList }){
             {searchData.length > 0 && <Table >
                 <TableBody>
                     {searchData.map((result, index) => (
-                        <>
-                            <TableRow key={result.imdbID} sx={{ [`& .MuiTableCell-root`]: { border: "none" } }}  >
+                        <React.Fragment key={index}>
+                            <TableRow key={`${index}-value`} sx={{ [`& .MuiTableCell-root`]: { border: "none" } }}  >
                                 <TableCell >{result.Title}</TableCell>
                                 <TableCell >{result.Year}</TableCell>
                                 <TableCell >{result.Type}</TableCell>
                             </TableRow>
-                            <TableRow key={index}>
+                            <TableRow key={`${index}-button`} >
                                 <TableCell colSpan={3} sx={{ paddingTop: "0px", paddingBottom: "25px" }} >
                                     <Button variant='outlined' onClick={()=>onAddSearchEntry(result)} sx={{ width: "100%" }}> + </Button>
                                 </TableCell>
                             </TableRow>
-                        </>
+                        </React.Fragment>
                     ))}
                 </TableBody>
             </Table>}
