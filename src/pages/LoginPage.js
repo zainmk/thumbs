@@ -21,7 +21,7 @@ function LoginPage() {
     const { setUser } = useContext(UserContext);
 
     const onLogin = () => {
-        if (username === "" || password === "") { // TODO: Add bounding check user input as a helper function
+        if (username === "" || password === "") {
             alert("Enter a name and password")
         } 
         else {
@@ -30,7 +30,7 @@ function LoginPage() {
                     alert("user not found")
                 }
                 else{
-                    if(res.password === password){ // authenticated
+                    if(res.password === password){
                         setUser(username)
                         navigate('/')
                     }

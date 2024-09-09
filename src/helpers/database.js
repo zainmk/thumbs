@@ -1,3 +1,5 @@
+// TODO: Move these methods to the backend API
+
 const AUTH_FIREBASE_USERS = async(path = '') => {
     const authToken = await fetch(process.env.REACT_APP_AUTH_URL).then(res => res.json())
     return `https://thumbsapp-748bd-default-rtdb.firebaseio.com/users/${path}.json?access_token=${authToken}`

@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+
+import { UserContext } from '../helpers/userContext';
 
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
@@ -53,7 +55,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 
 
-function SearchCard({ setMediaList }){
+function SearchCard(){
+
+    const { setMediaList } = useContext(UserContext);
 
     const [searchText, setSearchText] = useState('');
     const [searchData, setSearchData] = useState([]);

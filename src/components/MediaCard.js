@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+
+import { UserContext } from '../helpers/userContext';
+
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -8,10 +11,12 @@ import Divider from '@mui/material/Divider';
 import LibraryTools from './LibraryTools';
 
 
-function MediaCard({ media, setMediaList }){
+function MediaCard({ media }){
+
+    const { setMediaList } = useContext(UserContext) // TODO: Move this to parent, and use setMedia
 
     const [image, setImage] = useState()
-    const [status, setStatus] = useState(media.status) // A single useState variable to keep all mutually exclusively selected
+    const [status, setStatus] = useState(media.status)
 
     // TODO: Consider fixing this hook so it has necessary dependencies but does not rerender too often.
     useEffect(() => {
@@ -23,7 +28,7 @@ function MediaCard({ media, setMediaList }){
             return newMediaList
         })
 
-    }, [status])
+    }, [status, setMediaList, media.imdbID])
 
     useEffect(() => {
         if(media.Poster && media.Poster !== 'N/A'){
@@ -33,6 +38,7 @@ function MediaCard({ media, setMediaList }){
                 .then(res => setImage(res))
         }
     }, [media])
+    
 
     return ( 
         <Box sx={{ display: "flex", gap:"20px" }}>

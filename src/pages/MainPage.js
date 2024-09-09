@@ -11,22 +11,21 @@ import { getMediaList, updateMediaList } from '../helpers/database.js'
 
 function MainPage() {
 
-  const { user } = useContext(UserContext);
-  const [mediaList, setMediaList] = useState() // TODO: consider a context for this variable
-  const [isLoading, setIsLoading] = useState(false)
+  const { user, mediaList, setMediaList } = useContext(UserContext);
+  const [ isLoading, setIsLoading ] = useState(false)
 
   useEffect(()=> {
 
     setIsLoading(true)
     
-    if(user){
+    if(user){ // should only be ON this page when 'user' has a value
       getMediaList(user).then(res => {
         setMediaList(res ? res : [])
         setIsLoading(false)
       })
 
     }
-  }, [user])
+  }, [user, setMediaList])
 
   useEffect(()=>{
     updateMediaList(user, mediaList)
@@ -36,7 +35,7 @@ function MainPage() {
       <Box sx={{ display: 'flex', flexDirection: 'column', height:"100vh" }}>
         <TitleBar  />
         <Box sx={{ flex: 1, backgroundImage:"url('rollinghills.gif')" }}>
-          <CardList mediaList={mediaList} setMediaList={setMediaList} isLoading={isLoading} />
+          <CardList isLoading={isLoading} />
         </Box>
       </Box>
   );
