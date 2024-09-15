@@ -1,4 +1,4 @@
-# thumbs ![thumbs_image](./public/thumbs.png)
+# [thumbs](https://thumbs.vercel.app/) ![thumbs_image](./public/thumbs.png)
 
 ## intro
 The purpose of this application is for users to track the movies/shows/games they've 'experienced' in a memorable manner. The goal is to make the experience interactable as well, including 'Easter Eggs' to unlock new features and a social system to easily add items to your watchlist. There can also be support for additional 'tools' based features and testing.
